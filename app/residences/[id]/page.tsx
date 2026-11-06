@@ -67,7 +67,7 @@ export default async function Residence({ params }: { params: Promise<{ id: stri
         </div>
       </section>
 
-      <div className="mx-auto -mt-10 max-w-7xl px-6">
+      <div className="relative z-10 mx-auto -mt-10 max-w-7xl px-6">
         <div className="card grid grid-cols-2 divide-line sm:grid-cols-3 lg:grid-cols-5 lg:divide-x">
           {stats.map((s) => (
             <div key={s.l} className="flex items-center gap-3 p-5">

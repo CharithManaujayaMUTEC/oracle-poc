@@ -43,7 +43,7 @@ export default function Staff() {
       <Nav />
       <PageHero eyebrow="Our team" title="People who care, professionally." image="/images/community.jpg" />
 
-      <div className="mx-auto -mt-10 max-w-7xl px-6">
+      <div className="relative z-10 mx-auto -mt-10 max-w-7xl px-6">
         <div className="card grid grid-cols-2 divide-line sm:grid-cols-4 sm:divide-x">
           {[["Users", "24/7", "Care cover"], ["ShieldCheck", "100%", "Background checked"], ["GraduationCap", "Monthly", "Training"], ["Stethoscope", "RN-led", "Every shift"]].map(([i, v, l]) => (
             <div key={l} className="flex items-center gap-3 p-5">

@@ -8,10 +8,10 @@ import { ROOMS, SERVICES } from "@/lib/data";
 import { ArrowRight, Quote, Star, Sparkles, Tv, Users } from "lucide-react";
 
 const SLIDES = [
-  { src: "/images/hero.jpg", alt: "Caregiver and resident sharing a smile", pos: "75% center", q: "Every resident deserves to be greeted with a smile." },
-  { src: "/images/lounge.jpg", alt: "Carer serving tea in the lounge", pos: "60% center", q: "Comfort is a warm cup of tea and someone who has time." },
-  { src: "/images/community.jpg", alt: "Carers and residents at a shared table", pos: "65% center", q: "Belonging is part of good health." },
-  { src: "/images/room.jpg", alt: "Carer attending to a resident in her room", pos: "70% center", q: "A private room should feel like home." },
+  { src: "/images/hero.jpg", alt: "Caregiver and resident sharing a smile", pos: "75% center", eyebrow: "Residential care & wellness", h1: "Compassionate senior care, ", h2: "professionally delivered.", p: "Qualified carers, private residences and a connected care record for every family." },
+  { src: "/images/lounge.jpg", alt: "Carer serving tea in the lounge", pos: "60% center", eyebrow: "Daily support", h1: "Comfort, served with ", h2: "time and attention.", p: "Round-the-clock carers who know each resident's routine, preferences and needs." },
+  { src: "/images/community.jpg", alt: "Carers and residents at a shared table", pos: "65% center", eyebrow: "Community life", h1: "Belonging is part of ", h2: "good health.", p: "Shared meals, activities and wellness sessions that keep residents connected." },
+  { src: "/images/room.jpg", alt: "Carer attending to a resident in her room", pos: "70% center", eyebrow: "Private residences", h1: "A private room that ", h2: "feels like home.", p: "Ten gem-named residences across two homes, each with its own character." },
 ];
 
 function Hero() {
@@ -20,21 +20,24 @@ function Hero() {
     const t = setInterval(() => setI((x) => (x + 1) % SLIDES.length), 5000);
     return () => clearInterval(t);
   }, []);
+  const sl = SLIDES[i];
 
   return (
     <section className="relative overflow-hidden bg-white">
-      {SLIDES.map((sl, n) => (
-        <Image key={sl.src} src={sl.src} alt={sl.alt} fill priority={n === 0} sizes="100vw" className="object-cover transition-opacity duration-1000" style={{ opacity: n === i ? 1 : 0, objectPosition: sl.pos }} />
+      {SLIDES.map((x, n) => (
+        <Image key={x.src} src={x.src} alt={x.alt} fill priority={n === 0} sizes="100vw" className="object-cover transition-opacity duration-1000" style={{ opacity: n === i ? 1 : 0, objectPosition: x.pos }} />
       ))}
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/10 md:via-white/75" />
       <div className="relative mx-auto flex min-h-[640px] max-w-7xl items-center px-6 py-20">
-        <div className="fadeup max-w-xl">
-          <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-gold"><span className="h-px w-10 bg-gold" />Residential care &amp; wellness</div>
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.12] tracking-tight text-forest md:text-6xl">
-            Compassionate senior care, <span className="text-gold">professionally delivered.</span>
-          </h1>
-          <p className="mt-6 max-w-md text-lg text-mute">Qualified carers, private residences and a connected care record for every family.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+        <div className="max-w-xl">
+          <div key={i} className="fadeup min-h-[330px] md:min-h-[360px]">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-gold">{sl.eyebrow}</div>
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.12] tracking-tight text-forest md:text-6xl">
+              {sl.h1}<span className="text-gold">{sl.h2}</span>
+            </h1>
+            <p className="mt-6 max-w-md text-lg text-mute">{sl.p}</p>
+          </div>
+          <div className="mt-2 flex flex-wrap gap-3">
             <Link href="/signup" className="btn btn-primary">Request access <ArrowRight size={16} /></Link>
             <Link href="/packages" className="btn btn-ghost">View packages</Link>
           </div>
@@ -46,16 +49,6 @@ function Hero() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="relative mx-6 mb-8 rounded-xl bg-forest/90 p-5 text-white shadow-xl backdrop-blur md:absolute md:bottom-8 md:right-8 md:mx-0 md:mb-0 md:w-[360px]">
-        <Quote size={22} className="text-gold2" />
-        <p key={i} className="fadeup mt-3 min-h-[3.5rem] text-lg font-medium leading-snug">{SLIDES[i].q}</p>
-        <div className="mt-4 flex gap-2">
-          {SLIDES.map((_, n) => (
-            <span key={n} className="h-1.5 rounded-full transition-all duration-700" style={{ width: n === i ? 28 : 10, background: n === i ? "var(--gold-2)" : "rgba(255,255,255,.35)" }} />
-          ))}
         </div>
       </div>
     </section>

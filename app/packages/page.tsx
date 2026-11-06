@@ -68,7 +68,7 @@ export default function Packages() {
         </div>
       </section>
 
-      <section className="mx-auto -mt-14 max-w-7xl px-6">
+      <section className="relative z-10 mx-auto -mt-14 max-w-7xl px-6">
         <div className="grid gap-5 md:grid-cols-3">
           {TIERS.map((t, n) => (
             <Reveal key={t.id} delay={n * 100}>
