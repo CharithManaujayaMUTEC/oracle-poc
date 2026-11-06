@@ -1,29 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Gem, Icon, Logo, Reveal } from "@/components/ui";
+import { Gem, Icon, Reveal } from "@/components/ui";
+import { Footer, Nav } from "@/components/site";
 import { ROOMS, SERVICES } from "@/lib/data";
 import { ArrowRight, Sparkles, Tv, Users } from "lucide-react";
-
-function Nav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-cream/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Logo />
-        <nav className="hidden gap-8 text-sm font-semibold text-forest md:flex">
-          <a href="#homes">Homes</a>
-          <a href="#life">Life</a>
-          <a href="#one">ONE · SAGE</a>
-          <a href="#path">Journey</a>
-        </nav>
-        <div className="flex gap-3">
-          <Link href="/login" className="btn btn-ghost">Sign in</Link>
-          <Link href="/signup" className="btn btn-gold hidden sm:inline-flex">Join</Link>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   return (
@@ -39,7 +20,7 @@ function Hero() {
           <p className="mt-6 max-w-md text-lg text-mute">Qualified carers, private residences and a connected care record for every family.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/signup" className="btn btn-primary">Request access <ArrowRight size={16} /></Link>
-            <Link href="/login" className="btn btn-ghost">Sign in to ONE</Link>
+            <Link href="/packages" className="btn btn-ghost">View packages</Link>
           </div>
           <div className="mt-12 flex items-center gap-10 border-t border-line pt-6">
             {[["10", "Residences"], ["2", "Homes"], ["24/7", "Care team"]].map(([a, b]) => (
@@ -222,10 +203,7 @@ export default function Home() {
       <Life />
       <OneSage />
       <Path />
-      <footer className="bg-cream py-10 text-center">
-        <div className="flex justify-center"><Logo size={32} /></div>
-        <div className="mt-3 text-xs text-mute">People · Purpose · A Brighter Tomorrow — prototype with demo data</div>
-      </footer>
+      <Footer />
     </>
   );
 }
