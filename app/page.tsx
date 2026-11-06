@@ -2,10 +2,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Gem, Icon, Reveal } from "@/components/ui";
+import { Avatar, Gem, Icon, Reveal } from "@/components/ui";
 import { Footer, Nav } from "@/components/site";
 import { ROOMS, SERVICES } from "@/lib/data";
-import { ArrowRight, ChevronLeft, ChevronRight, Quote, Sparkles, Tv, Users } from "lucide-react";
+import { ArrowRight, Quote, Star, Sparkles, Tv, Users } from "lucide-react";
 
 const SLIDES = [
   { src: "/images/hero.jpg", alt: "Caregiver and resident sharing a smile", pos: "75% center", q: "Every resident deserves to be greeted with a smile." },
@@ -16,16 +16,13 @@ const SLIDES = [
 
 function Hero() {
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
   useEffect(() => {
-    if (paused) return;
-    const t = setInterval(() => setI((x) => (x + 1) % SLIDES.length), 6000);
+    const t = setInterval(() => setI((x) => (x + 1) % SLIDES.length), 5000);
     return () => clearInterval(t);
-  }, [paused]);
-  const go = (n: number) => setI((n + SLIDES.length) % SLIDES.length);
+  }, []);
 
   return (
-    <section className="relative overflow-hidden bg-white" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <section className="relative overflow-hidden bg-white">
       {SLIDES.map((sl, n) => (
         <Image key={sl.src} src={sl.src} alt={sl.alt} fill priority={n === 0} sizes="100vw" className="object-cover transition-opacity duration-1000" style={{ opacity: n === i ? 1 : 0, objectPosition: sl.pos }} />
       ))}
@@ -55,16 +52,10 @@ function Hero() {
       <div className="relative mx-6 mb-8 rounded-xl bg-forest/90 p-5 text-white shadow-xl backdrop-blur md:absolute md:bottom-8 md:right-8 md:mx-0 md:mb-0 md:w-[360px]">
         <Quote size={22} className="text-gold2" />
         <p key={i} className="fadeup mt-3 min-h-[3.5rem] text-lg font-medium leading-snug">{SLIDES[i].q}</p>
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex gap-2">
-            {SLIDES.map((_, n) => (
-              <button key={n} aria-label={`Slide ${n + 1}`} onClick={() => go(n)} className="h-1.5 rounded-full transition-all" style={{ width: n === i ? 28 : 10, background: n === i ? "var(--gold-2)" : "rgba(255,255,255,.35)" }} />
-            ))}
-          </div>
-          <div className="flex gap-2">
-            <button aria-label="Previous" onClick={() => go(i - 1)} className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 hover:bg-white/20"><ChevronLeft size={18} /></button>
-            <button aria-label="Next" onClick={() => go(i + 1)} className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 hover:bg-white/20"><ChevronRight size={18} /></button>
-          </div>
+        <div className="mt-4 flex gap-2">
+          {SLIDES.map((_, n) => (
+            <span key={n} className="h-1.5 rounded-full transition-all duration-700" style={{ width: n === i ? 28 : 10, background: n === i ? "var(--gold-2)" : "rgba(255,255,255,.35)" }} />
+          ))}
         </div>
       </div>
     </section>
@@ -106,23 +97,25 @@ function Homes() {
     <section id="homes" className="mx-auto max-w-7xl px-6 py-20">
       <Reveal className="text-center">
         <h2 className="text-4xl font-semibold text-forest md:text-5xl">Ten residences. Two homes.</h2>
+        <p className="mt-3 text-mute">Select a residence to explore.</p>
       </Reveal>
       <div className="mt-12 grid gap-8 md:grid-cols-2">
         {[1, 2].map((h) => (
           <Reveal key={h} delay={h * 120}>
             <div className="card p-6">
               <div className="mb-5 flex items-center justify-between">
-                <span className="text-2xl font-semibold text-forest">House {h}</span>
+                <Link href="/residences" className="text-2xl font-semibold text-forest hover:text-gold">House {h}</Link>
                 <span className="h-1 w-20 rounded-full bg-gradient-to-r from-gold to-transparent" />
               </div>
               <div className="grid grid-cols-5 gap-2">
                 {ROOMS.filter((r) => r.house === h).map((r) => (
-                  <div key={r.id} className="group rounded-2xl p-2 text-center transition-all" style={{ background: r.soft }}>
-                    <div className="mx-auto transition-transform"><Gem color={r.color} size={46} /></div>
+                  <Link key={r.id} href={`/residences/${r.id}`} className="group rounded-xl p-2 text-center transition-shadow hover:shadow-lg" style={{ background: r.soft }}>
+                    <div className="mx-auto w-fit"><Gem color={r.color} size={46} /></div>
                     <div className="mt-1 text-[11px] font-bold" style={{ color: r.color }}>{r.name}</div>
-                  </div>
+                  </Link>
                 ))}
               </div>
+              <Link href="/residences" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold">View all residences <ArrowRight size={14} /></Link>
             </div>
           </Reveal>
         ))}
@@ -148,6 +141,41 @@ function Life() {
             </Reveal>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+const TESTIMONIALS = [
+  { q: "I can see how my mother's day has gone without having to call. It lets me stay close from far away.", n: "Chamari J.", r: "Daughter of a resident" },
+  { q: "The nurses know him by name and by habit. He looks forward to his tea and his walks again.", n: "Sunil P.", r: "Son of a resident" },
+  { q: "We were involved in every decision, and the paperwork was clear from the first meeting.", n: "Priya S.", r: "Wife of a resident" },
+];
+
+function Testimonials() {
+  return (
+    <section className="bg-sand/60 py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="text-center">
+          <div className="text-xs font-bold uppercase tracking-[0.22em] text-gold">Families say</div>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-forest md:text-4xl">Trusted by the people who matter most.</h2>
+        </Reveal>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
+            <Reveal key={t.n} delay={i * 100}>
+              <figure className="card flex h-full flex-col p-6">
+                <Quote size={28} className="text-gold2" />
+                <div className="mt-3 flex gap-0.5 text-gold">{[0, 1, 2, 3, 4].map((k) => <Star key={k} size={14} fill="currentColor" />)}</div>
+                <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-ink">{t.q}</blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-line pt-4">
+                  <Avatar name={t.n} hue="#176a7c" size={42} />
+                  <div className="text-sm font-semibold text-forest">{t.n}<div className="text-xs font-medium text-mute">{t.r}</div></div>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+        <p className="mt-6 text-center text-xs font-semibold text-mute">Sample feedback shown for demonstration.</p>
       </div>
     </section>
   );
@@ -236,6 +264,7 @@ export default function Home() {
       <Gallery />
       <Homes />
       <Life />
+      <Testimonials />
       <OneSage />
       <Path />
       <Footer />

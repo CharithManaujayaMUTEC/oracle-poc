@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Check, Minus } from "lucide-react";
 import { Footer, Nav } from "@/components/site";
+import { OffersSection } from "@/components/offers";
 import { Gem, Icon, Reveal } from "@/components/ui";
 import { ROOMS, SERVICES, fmt } from "@/lib/data";
 
@@ -34,12 +35,6 @@ const TERMS = [
   { id: "y", label: "12 months", off: 0.1 },
 ] as const;
 
-const OFFERS = [
-  { icon: "CalendarCheck", big: "10%", t: "12-month stay", d: "Off the monthly fee", c: "#0e8a9a" },
-  { icon: "Users", big: "1.7×", t: "Couple occupancy", d: "Instead of paying double", c: "#176a7c" },
-  { icon: "Gift", big: "Free", t: "Registration fee", d: "For founding residents", c: "#0b4254" },
-  { icon: "UserPlus", big: "1 mo", t: "Spa add-on", d: "When you refer a family", c: "#3f9a76" },
-];
 
 export default function Packages() {
   const [couple, setCouple] = useState(false);
@@ -114,28 +109,7 @@ export default function Packages() {
         <p className="mt-4 text-center text-xs font-semibold text-mute">Indicative prices (LKR) for demonstration. Final fees are set in the signed admission agreement.</p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <Reveal>
-          <div className="text-xs font-bold uppercase tracking-[0.22em] text-gold">Offers</div>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-forest md:text-4xl">Current offers</h2>
-        </Reveal>
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {OFFERS.map((o, i) => (
-            <Reveal key={o.t} delay={i * 80}>
-              <div className="card h-full overflow-hidden">
-                <div className="flex items-center justify-between p-5 text-white" style={{ background: o.c }}>
-                  <span className="text-3xl font-semibold tracking-tight">{o.big}</span>
-                  <Icon name={o.icon} size={26} className="opacity-80" />
-                </div>
-                <div className="p-5">
-                  <div className="font-semibold text-forest">{o.t}</div>
-                  <div className="mt-1 text-sm text-mute">{o.d}</div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <OffersSection />
 
       <section className="bg-sand/60 py-20">
         <div className="mx-auto max-w-7xl px-6">
