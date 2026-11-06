@@ -44,7 +44,7 @@ function Chips({ options, value, onChange, multi }: { options: readonly string[]
 }
 
 export default function Register() {
-  const { addResident } = useApp();
+  const { addResident, log } = useApp();
   const [step, setStep] = useState(0);
   const [done, setDone] = useState<Resident | null>(null);
   const [f, setF] = useState({
@@ -93,6 +93,7 @@ export default function Register() {
       care: f.mobility === "Hoist" ? 4 : f.mobility === "Wheelchair" ? 3 : f.mobility === "Cane / frame" ? 2 : 1,
     };
     addResident(r);
+    log("Registered new client", r.name);
     setDone(r);
   };
 
@@ -118,7 +119,7 @@ export default function Register() {
         </div>
         <div className="mt-8 flex justify-center gap-3">
           <Link href={`/app/residents/${done.id}`} className="btn btn-primary">Open profile</Link>
-          <Link href="/app/residents" className="btn btn-ghost">All residents</Link>
+          <Link href="/app/admissions" className="btn btn-ghost">Admission workflow</Link>
         </div>
       </div>
     );
@@ -126,7 +127,7 @@ export default function Register() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="text-4xl font-semibold text-forest">New resident</h1>
+      <h1 className="text-3xl font-semibold tracking-tight text-forest">Register client</h1>
 
       {/* stepper */}
       <div className="mt-6 flex items-center">

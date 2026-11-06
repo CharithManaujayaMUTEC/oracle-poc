@@ -1,4 +1,4 @@
-export type Role = "director" | "nurse" | "guardian";
+export type Role = "director" | "manager" | "nurse" | "caregiver" | "finance" | "guardian";
 
 export type RoomStatus = "occupied" | "vacant" | "reserved" | "maintenance";
 
@@ -153,8 +153,25 @@ export const SERVICES: Service[] = [
 
 export const fmt = (n: number) => "LKR " + n.toLocaleString("en-US");
 
-export const DEMO_USERS: Record<Role, { name: string; email: string; title: string; tone: string }> = {
-  director: { name: "Dr. Ayesha Wijesinghe", email: "director@village60.lk", title: "Director", tone: "#0b4254" },
-  nurse: { name: "Nurse Dilini Fernando", email: "nurse@village60.lk", title: "Nurse · House 1", tone: "#3f9a76" },
-  guardian: { name: "Sunil Perera", email: "sunil@family.lk", title: "Guardian of Nimal Perera", tone: "#0e8a9a" },
+export const ROLE_LABEL: Record<Role, string> = {
+  director: "Director",
+  manager: "Facility Manager",
+  nurse: "Nursing",
+  caregiver: "Caregiver",
+  finance: "Finance",
+  guardian: "Guardian",
 };
+
+export const DEMO_USERS: Record<Role, { name: string; email: string; title: string; tone: string; icon: string; blurb: string }> = {
+  director: { name: "Dr. Ayesha Wijesinghe", email: "director@village60.lk", title: "Director", tone: "#0b4254", icon: "Crown", blurb: "Organisation-wide oversight" },
+  manager: { name: "Kasun Ranasinghe", email: "manager@village60.lk", title: "Facility Manager · House 1", tone: "#176a7c", icon: "Building2", blurb: "Run a facility day to day" },
+  nurse: { name: "Dilini Fernando", email: "nurse@village60.lk", title: "Lead Nurse · House 1", tone: "#0e8a9a", icon: "Stethoscope", blurb: "Clinical records and medication" },
+  caregiver: { name: "Ruwan Jayakody", email: "carer@village60.lk", title: "Caregiver · House 1", tone: "#3f9a76", icon: "HeartHandshake", blurb: "Daily care on the ONE Care app" },
+  finance: { name: "Tharushi Gunawardena", email: "finance@village60.lk", title: "Finance & Admissions", tone: "#6b7a99", icon: "Receipt", blurb: "Invoices, payments, pricing" },
+  guardian: { name: "Sunil Perera", email: "sunil@family.lk", title: "Guardian of Nimal Perera", tone: "#b07a2a", icon: "Heart", blurb: "ONE Family portal" },
+};
+
+export const FACILITIES = [
+  { id: "h1", name: "House 1" },
+  { id: "h2", name: "House 2" },
+] as const;

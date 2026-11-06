@@ -5,13 +5,10 @@ import { useMemo, useState } from "react";
 import { AuthShell } from "@/components/auth";
 import { Icon } from "@/components/ui";
 import { useApp } from "@/lib/store";
-import { Role } from "@/lib/data";
+import { DEMO_USERS, ROLE_LABEL, Role } from "@/lib/data";
+import { HOME } from "@/lib/nav";
 
-const ROLES: { r: Role; label: string; icon: string; tone: string }[] = [
-  { r: "guardian", label: "Family", icon: "Heart", tone: "#0e8a9a" },
-  { r: "nurse", label: "Care team", icon: "Stethoscope", tone: "#3f9a76" },
-  { r: "director", label: "Management", icon: "Crown", tone: "#0b4254" },
-];
+const ROLES = (Object.keys(DEMO_USERS) as Role[]).map((r) => ({ r, label: ROLE_LABEL[r], icon: DEMO_USERS[r].icon, tone: DEMO_USERS[r].tone }));
 
 export default function Signup() {
   const { signup } = useApp();
@@ -33,14 +30,14 @@ export default function Signup() {
           e.preventDefault();
           const m = signup({ ...f, role });
           if (m) setErr(m);
-          else router.push("/app");
+          else router.push(HOME[role]);
         }}
       >
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2.5">
           {ROLES.map((x) => (
-            <button type="button" key={x.r} onClick={() => setRole(x.r)} className="card p-3 text-center transition-all" style={role === x.r ? { borderColor: x.tone, boxShadow: `0 0 0 3px ${x.tone}33` } : {}}>
-              <span className="mx-auto grid h-11 w-11 place-items-center rounded-2xl text-white" style={{ background: x.tone }}><Icon name={x.icon} size={20} /></span>
-              <div className="mt-2 text-xs font-bold text-forest">{x.label}</div>
+            <button type="button" key={x.r} onClick={() => setRole(x.r)} className="card p-3 text-center" style={role === x.r ? { borderColor: x.tone, boxShadow: `0 0 0 3px ${x.tone}33` } : {}}>
+              <span className="mx-auto grid h-10 w-10 place-items-center rounded-lg text-white" style={{ background: x.tone }}><Icon name={x.icon} size={20} /></span>
+              <div className="mt-2 text-[11px] font-bold leading-tight text-forest">{x.label}</div>
             </button>
           ))}
         </div>
