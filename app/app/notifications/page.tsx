@@ -26,7 +26,7 @@ export default function Notifications() {
       <div className="card divide-y divide-line overflow-hidden">
         {list.map((n) => (
           <div key={n.id} className="flex flex-wrap items-center gap-4 px-5 py-4" style={{ opacity: n.ack ? 0.6 : 1, background: n.pri === "Critical" && !n.ack ? "#fff6f8" : undefined }}>
-            <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: n.ack ? "#b9c5cb" : n.pri === "Critical" ? "#c2395a" : n.pri === "High" ? "#e0a02b" : "#0e8a9a" }} />
+            <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: n.ack ? "#BDBBAE" : n.pri === "Critical" ? "#c2395a" : n.pri === "High" ? "#e0a02b" : "#B08D57" }} />
             <div className="min-w-0 flex-1">
               <div className="text-sm font-semibold text-forest">{n.title}</div>
               <div className="text-xs text-mute">{n.mod} · {n.when}</div>

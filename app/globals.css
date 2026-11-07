@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #f4f8fa;
+  --cream: #f6f5f0;
   --paper: #ffffff;
-  --sand: #e8eff2;
-  --forest: #0b4254;
-  --forest-2: #176a7c;
-  --sage: #e0f0f2;
-  --gold: #0e8a9a;
-  --gold-2: #a9dbe0;
-  --ink: #14262d;
-  --mute: #5d7480;
-  --line: #dbe5ea;
+  --sand: #eceae0;
+  --forest: #023c2e;
+  --forest-2: #046a4e;
+  --sage: #e3efe9;
+  --gold: #b08d57;
+  --gold-2: #d9c39a;
+  --ink: #0f1512;
+  --mute: #66726c;
+  --line: #e1dfd3;
+  --black: #090a09;
 }
 
 @theme inline {
@@ -26,6 +27,7 @@
   --color-ink: var(--ink);
   --color-mute: var(--mute);
   --color-line: var(--line);
+  --color-night: var(--black);
   --font-sans: var(--font-inter);
   --font-display: var(--font-inter);
   --radius-xl: 0.5rem;
@@ -48,11 +50,15 @@ body {
   letter-spacing: -0.02em;
 }
 
+.font-wordmark {
+  font-family: var(--font-cinzel), Georgia, serif;
+}
+
 .card {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 0.75rem;
-  box-shadow: 0 1px 2px rgba(11, 66, 84, 0.05), 0 8px 24px -16px rgba(11, 66, 84, 0.18);
+  box-shadow: 0 1px 2px rgba(2, 60, 46, 0.05), 0 8px 24px -16px rgba(2, 60, 46, 0.18);
 }
 
 .btn {
@@ -78,7 +84,7 @@ body {
 }
 .btn-gold {
   background: var(--gold);
-  color: #fff;
+  color: #090a09;
   
 }
 .btn-ghost {
@@ -99,7 +105,7 @@ body {
 }
 .input:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(14, 138, 154, 0.15);
+  box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.15);
 }
 
 .chip {
@@ -122,7 +128,7 @@ body {
 }
 
 .grain {
-  background-image: radial-gradient(rgba(14, 138, 154, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(176, 141, 87, 0.12) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 

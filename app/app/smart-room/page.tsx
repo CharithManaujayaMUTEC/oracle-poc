@@ -42,7 +42,7 @@ export default function SmartRoom() {
       <PageHead title="Smart room" sub="SAGE Room simulation: what the resident's TV / bedside tablet shows, and how staff are alerted" />
       <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
         <div>
-          <div className="rounded-[1.5rem] border-[10px] border-[#14262d] bg-gradient-to-br from-forest to-forest2 p-6 text-white shadow-2xl">
+          <div className="rounded-[1.5rem] border-[10px] border-[#090A09] bg-gradient-to-br from-forest to-forest2 p-6 text-white shadow-2xl">
             <div className="flex items-start justify-between">
               <div>
                 <div className="text-sm text-white/70">Jade · {now.toLocaleDateString([], { weekday: "long", day: "numeric", month: "long" })}</div>

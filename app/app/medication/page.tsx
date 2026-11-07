@@ -67,8 +67,8 @@ export default function Medication() {
               <div className="mt-4 flex items-center">
                 {["Placed", "Dispatched", "Delivered"].map((l, i) => (
                   <div key={l} className="flex flex-1 items-center">
-                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-[10px] font-bold" style={{ background: i <= p.status ? "var(--forest-2)" : "#e3ecef", color: i <= p.status ? "#fff" : "var(--mute)" }}>{i + 1}</span>
-                    {i < 2 && <span className="h-0.5 flex-1" style={{ background: i < p.status ? "var(--forest-2)" : "#e3ecef" }} />}
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-[10px] font-bold" style={{ background: i <= p.status ? "var(--forest-2)" : "#E7E5DA", color: i <= p.status ? "#fff" : "var(--mute)" }}>{i + 1}</span>
+                    {i < 2 && <span className="h-0.5 flex-1" style={{ background: i < p.status ? "var(--forest-2)" : "#E7E5DA" }} />}
                   </div>
                 ))}
               </div>

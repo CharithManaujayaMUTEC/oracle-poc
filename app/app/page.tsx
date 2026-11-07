@@ -42,7 +42,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <Stat icon="Users" label="Residents" value={fac === "All" ? residents.length : residents.filter((r) => `House ${ROOMS.find((x) => x.id === r.room)?.house}` === fac).length} sub="in care" />
         <div className="card flex items-center gap-4 p-5">
-          <Ring value={(occ / rooms.length) * 100} size={56} stroke={7} color="#0e8a9a" />
+          <Ring value={(occ / rooms.length) * 100} size={56} stroke={7} color="#B08D57" />
           <div><div className="text-2xl font-semibold text-forest">{occ}/{rooms.length}</div><div className="text-xs font-semibold text-mute">Occupied · {free} available</div></div>
         </div>
         <Stat icon="Pill" label="Medication exceptions" value={medsDue} tone="amber" />
@@ -76,14 +76,14 @@ export default function Dashboard() {
                 {ROOMS.filter((r) => r.house === h).map((r) => (
                   <Link href="/app/rooms" key={r.id} title={`${r.name} · ${r.status}`} className="relative rounded-lg p-1.5 text-center" style={{ background: r.soft, opacity: r.status === "vacant" ? 0.55 : 1 }}>
                     <Gem color={r.color} size={30} />
-                    <span className="absolute right-1 top-1 h-2 w-2 rounded-full" style={{ background: { occupied: "#3f9a76", vacant: "#b9c5cb", reserved: "#e0a02b", maintenance: "#c2395a" }[r.status] }} />
+                    <span className="absolute right-1 top-1 h-2 w-2 rounded-full" style={{ background: { occupied: "#3f9a76", vacant: "#BDBBAE", reserved: "#e0a02b", maintenance: "#c2395a" }[r.status] }} />
                   </Link>
                 ))}
               </div>
             </div>
           ))}
           <div className="flex flex-wrap gap-3 text-[11px] font-semibold text-mute">
-            {[["Occupied", "#3f9a76"], ["Vacant", "#b9c5cb"], ["Reserved", "#e0a02b"], ["Maintenance", "#c2395a"]].map(([l, c]) => <span key={l} className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-full" style={{ background: c }} />{l}</span>)}
+            {[["Occupied", "#3f9a76"], ["Vacant", "#BDBBAE"], ["Reserved", "#e0a02b"], ["Maintenance", "#c2395a"]].map(([l, c]) => <span key={l} className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-full" style={{ background: c }} />{l}</span>)}
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function Dashboard() {
               const r = residents.find((x) => x.name === a.resident);
               return (
                 <div key={a.id} className="flex items-center gap-3">
-                  <Avatar name={a.resident} hue={r?.hue ?? "#176a7c"} size={38} />
+                  <Avatar name={a.resident} hue={r?.hue ?? "#046A4E"} size={38} />
                   <div className="min-w-0 flex-1 text-sm font-semibold text-forest">{a.type}<div className="text-xs font-medium text-mute">{a.resident}</div></div>
                   <div className="text-right text-xs font-semibold text-mute">{a.day === 0 ? "Today" : `+${a.day}d`}<br />{a.time}</div>
                 </div>

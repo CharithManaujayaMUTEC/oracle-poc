@@ -78,7 +78,7 @@ export default function Register() {
       preferred: f.preferred || f.name.split(" ")[0],
       age: Number(f.age) || 75,
       room: f.room,
-      hue: room?.color ?? "#0e8a9a",
+      hue: room?.color ?? "#B08D57",
       mood: "calm",
       alerts: [...(f.mobility === "Hoist" ? ["Hoist"] : []), ...f.pins.slice(0, 1).map(() => "Skin check")],
       mobility: f.mobility,

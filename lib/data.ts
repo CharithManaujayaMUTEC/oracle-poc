@@ -22,7 +22,7 @@ export const ROOMS: Room[] = [
   { id: "pearl", name: "Pearl", house: 2, color: "#9aa7c7", soft: "#e8ecf6", status: "occupied", resident: "r4", price: 190000 },
   { id: "amber", name: "Amber", house: 2, color: "#e0a02b", soft: "#fcefce", status: "occupied", resident: "r5", price: 200000 },
   { id: "sapphire", name: "Sapphire", house: 2, color: "#2f63c4", soft: "#dce7fa", status: "vacant", price: 215000 },
-  { id: "opal", name: "Opal", house: 2, color: "#7cc3c9", soft: "#dff2f3", status: "maintenance", price: 185000 },
+  { id: "opal", name: "Opal", house: 2, color: "#7cc3c9", soft: "#E3EFE9", status: "maintenance", price: 185000 },
   { id: "emerald", name: "Emerald", house: 2, color: "#1f8a5b", soft: "#d6efe2", status: "occupied", resident: "r6", price: 220000 },
 ];
 
@@ -119,7 +119,7 @@ export const RESIDENTS: Resident[] = [
 
 export const MOODS = {
   happy: { icon: "Smile", label: "Content", color: "#3f7d5f" },
-  calm: { icon: "Meh", label: "Settled", color: "#176a7c" },
+  calm: { icon: "Meh", label: "Settled", color: "#046A4E" },
   tired: { icon: "Moon", label: "Tired", color: "#6b7a99" },
   low: { icon: "Frown", label: "Low mood", color: "#9b3b4a" },
 } as const;
@@ -133,22 +133,22 @@ export interface Service {
 }
 
 export const SERVICES: Service[] = [
-  { id: "ac", name: "Air conditioning", icon: "Snowflake", price: 18000, tone: "#176a7c" },
-  { id: "fridge", name: "Room fridge", icon: "Refrigerator", price: 6000, tone: "#176a7c" },
-  { id: "meals", name: "Tailored meals", icon: "Utensils", price: 32000, tone: "#176a7c" },
-  { id: "laundry", name: "Extra laundry", icon: "Shirt", price: 9000, tone: "#176a7c" },
-  { id: "car", name: "Private chauffeur", icon: "Car", price: 45000, tone: "#176a7c" },
-  { id: "escort", name: "Appointment escort", icon: "HeartHandshake", price: 22000, tone: "#176a7c" },
-  { id: "shop", name: "Personal shopping", icon: "ShoppingBag", price: 12000, tone: "#176a7c" },
-  { id: "salon", name: "Salon & barber", icon: "Scissors", price: 10000, tone: "#176a7c" },
-  { id: "spa", name: "Mani · pedi · podiatry", icon: "Sparkles", price: 14000, tone: "#176a7c" },
-  { id: "physio", name: "Physiotherapy", icon: "Activity", price: 38000, tone: "#176a7c" },
-  { id: "fit", name: "Fitness & wellness", icon: "Dumbbell", price: 16000, tone: "#176a7c" },
-  { id: "concierge", name: "Platinum 60 concierge", icon: "Crown", price: 60000, tone: "#176a7c" },
-  { id: "house", name: "Extra housekeeping", icon: "Brush", price: 11000, tone: "#176a7c" },
-  { id: "appt", name: "Medical coordination", icon: "Stethoscope", price: 15000, tone: "#176a7c" },
-  { id: "meds", name: "Medication delivery", icon: "Pill", price: 8000, tone: "#176a7c" },
-  { id: "review", name: "Monthly assessor review", icon: "ClipboardCheck", price: 20000, tone: "#176a7c" },
+  { id: "ac", name: "Air conditioning", icon: "Snowflake", price: 18000, tone: "#046A4E" },
+  { id: "fridge", name: "Room fridge", icon: "Refrigerator", price: 6000, tone: "#046A4E" },
+  { id: "meals", name: "Tailored meals", icon: "Utensils", price: 32000, tone: "#046A4E" },
+  { id: "laundry", name: "Extra laundry", icon: "Shirt", price: 9000, tone: "#046A4E" },
+  { id: "car", name: "Private chauffeur", icon: "Car", price: 45000, tone: "#046A4E" },
+  { id: "escort", name: "Appointment escort", icon: "HeartHandshake", price: 22000, tone: "#046A4E" },
+  { id: "shop", name: "Personal shopping", icon: "ShoppingBag", price: 12000, tone: "#046A4E" },
+  { id: "salon", name: "Salon & barber", icon: "Scissors", price: 10000, tone: "#046A4E" },
+  { id: "spa", name: "Mani · pedi · podiatry", icon: "Sparkles", price: 14000, tone: "#046A4E" },
+  { id: "physio", name: "Physiotherapy", icon: "Activity", price: 38000, tone: "#046A4E" },
+  { id: "fit", name: "Fitness & wellness", icon: "Dumbbell", price: 16000, tone: "#046A4E" },
+  { id: "concierge", name: "Platinum 60 concierge", icon: "Crown", price: 60000, tone: "#046A4E" },
+  { id: "house", name: "Extra housekeeping", icon: "Brush", price: 11000, tone: "#046A4E" },
+  { id: "appt", name: "Medical coordination", icon: "Stethoscope", price: 15000, tone: "#046A4E" },
+  { id: "meds", name: "Medication delivery", icon: "Pill", price: 8000, tone: "#046A4E" },
+  { id: "review", name: "Monthly assessor review", icon: "ClipboardCheck", price: 20000, tone: "#046A4E" },
 ];
 
 export const fmt = (n: number) => "LKR " + n.toLocaleString("en-US");
@@ -163,12 +163,12 @@ export const ROLE_LABEL: Record<Role, string> = {
 };
 
 export const DEMO_USERS: Record<Role, { name: string; email: string; title: string; tone: string; icon: string; blurb: string }> = {
-  director: { name: "Dr. Ayesha Wijesinghe", email: "director@village60.lk", title: "Director", tone: "#0b4254", icon: "Crown", blurb: "Organisation-wide oversight" },
-  manager: { name: "Kasun Ranasinghe", email: "manager@village60.lk", title: "Facility Manager · House 1", tone: "#176a7c", icon: "Building2", blurb: "Run a facility day to day" },
-  nurse: { name: "Dilini Fernando", email: "nurse@village60.lk", title: "Lead Nurse · House 1", tone: "#0e8a9a", icon: "Stethoscope", blurb: "Clinical records and medication" },
+  director: { name: "Dr. Ayesha Wijesinghe", email: "director@village60.lk", title: "Director", tone: "#090A09", icon: "Crown", blurb: "Organisation-wide oversight" },
+  manager: { name: "Kasun Ranasinghe", email: "manager@village60.lk", title: "Facility Manager · House 1", tone: "#023C2E", icon: "Building2", blurb: "Run a facility day to day" },
+  nurse: { name: "Dilini Fernando", email: "nurse@village60.lk", title: "Lead Nurse · House 1", tone: "#046A4E", icon: "Stethoscope", blurb: "Clinical records and medication" },
   caregiver: { name: "Ruwan Jayakody", email: "carer@village60.lk", title: "Caregiver · House 1", tone: "#3f9a76", icon: "HeartHandshake", blurb: "Daily care on the ONE Care app" },
   finance: { name: "Tharushi Gunawardena", email: "finance@village60.lk", title: "Finance & Admissions", tone: "#6b7a99", icon: "Receipt", blurb: "Invoices, payments, pricing" },
-  guardian: { name: "Sunil Perera", email: "sunil@family.lk", title: "Guardian of Nimal Perera", tone: "#b07a2a", icon: "Heart", blurb: "ONE Family portal" },
+  guardian: { name: "Sunil Perera", email: "sunil@family.lk", title: "Guardian of Nimal Perera", tone: "#B08D57", icon: "Heart", blurb: "ONE Family portal" },
 };
 
 export const FACILITIES = [

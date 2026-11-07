@@ -30,7 +30,7 @@ export default function Admin() {
         <div className="card divide-y divide-line overflow-hidden">
           {users.map((u) => (
             <div key={u.id} className="flex flex-wrap items-center gap-4 px-5 py-3.5">
-              <Avatar name={u.name} hue="#176a7c" size={40} />
+              <Avatar name={u.name} hue="#046A4E" size={40} />
               <div className="min-w-0 flex-1 text-sm font-semibold text-forest">{u.name}<div className="text-xs font-medium text-mute">{u.email}</div></div>
               <Pill tone="teal">{u.role}</Pill>
               <Pill tone={u.mfa ? "green" : "gray"}>{u.mfa ? "MFA on" : "MFA off"}</Pill>
@@ -57,7 +57,7 @@ export default function Admin() {
                 <tr key={m.id} className="border-b border-line last:border-0">
                   <td className="px-5 py-2.5 font-semibold text-forest"><span className="inline-flex items-center gap-2"><Icon name={m.icon} size={15} className="text-mute" />{m.label}</span></td>
                   {PERM_ROLES.map((r) => (
-                    <td key={r} className="px-2 py-2.5 text-center">{m.roles.includes(r) ? <Check size={17} className="mx-auto text-[#2f7d5c]" /> : <Minus size={15} className="mx-auto text-[#c7d2d8]" />}</td>
+                    <td key={r} className="px-2 py-2.5 text-center">{m.roles.includes(r) ? <Check size={17} className="mx-auto text-[#2f7d5c]" /> : <Minus size={15} className="mx-auto text-[#D4D2C6]" />}</td>
                   ))}
                 </tr>
               ))}
@@ -71,7 +71,7 @@ export default function Admin() {
         <div className="card divide-y divide-line overflow-hidden">
           {audit.map((a) => (
             <div key={a.id} className="flex items-center gap-4 px-5 py-3">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg" style={a.ai ? { background: "#e0f0f2", color: "#0e8a9a" } : { background: "#e8eff2", color: "#5d7480" }}>{a.ai ? <Sparkles size={16} /> : <Icon name="User" size={16} />}</span>
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg" style={a.ai ? { background: "#E3EFE9", color: "#B08D57" } : { background: "#ECEAE0", color: "#66726C" }}>{a.ai ? <Sparkles size={16} /> : <Icon name="User" size={16} />}</span>
               <div className="min-w-0 flex-1 text-sm font-semibold text-forest">{a.action}<div className="truncate text-xs font-medium text-mute">{a.target}</div></div>
               <div className="text-right text-xs font-semibold text-mute">{a.who}<br />{a.when}</div>
             </div>
@@ -92,7 +92,7 @@ export default function Admin() {
             <div className="grid gap-3 sm:grid-cols-2">
               {([["mfa", "Require MFA for privileged roles"], ["session", "Auto sign-out after 15 min idle"], ["retention", "Apply data retention schedule"], ["backup", "Daily encrypted backups"]] as const).map(([k, l]) => (
                 <button key={k} onClick={() => { setPolicy({ ...policy, [k]: !policy[k] }); log("Changed security policy", l); toast("Policy updated"); }} className="flex items-center gap-3 rounded-lg bg-cream p-3 text-left">
-                  <span className="relative h-6 w-11 shrink-0 rounded-full transition-colors" style={{ background: policy[k] ? "#0e8a9a" : "#cbd6db" }}><span className="absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all" style={{ left: policy[k] ? 22 : 2 }} /></span>
+                  <span className="relative h-6 w-11 shrink-0 rounded-full transition-colors" style={{ background: policy[k] ? "#B08D57" : "#D4D2C6" }}><span className="absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all" style={{ left: policy[k] ? 22 : 2 }} /></span>
                   <span className="text-sm font-semibold text-forest">{l}</span>
                 </button>
               ))}

@@ -6,13 +6,13 @@ import { useApp } from "@/lib/store";
 
 const INTEGRATIONS = [
   { id: "wa", n: "WhatsApp Business", i: "MessageCircle", d: "Guardian updates & enquiries", on: true, tone: "#2f7d5c" },
-  { id: "em", n: "Email", i: "Mail", d: "Invoices, invitations, reports", on: true, tone: "#0e8a9a" },
-  { id: "push", n: "Push notifications", i: "BellRing", d: "ONE Care & ONE Family apps", on: true, tone: "#0b4254" },
-  { id: "sms", n: "SMS", i: "Smartphone", d: "Fallback where required", on: false, tone: "#6b7a99" },
-  { id: "vid", n: "Video calling", i: "Video", d: "Resident ↔ family calls", on: false, tone: "#2f55a4" },
-  { id: "flash", n: "Flash Health", i: "Pill", d: "Pharmacy orders & delivery tracking", on: true, tone: "#b07a2a" },
-  { id: "pay", n: "Payment gateway", i: "CreditCard", d: "Online invoice payment", on: false, tone: "#5a4fa0" },
-  { id: "tv", n: "Smart TV / voice devices", i: "Tv", d: "SAGE Room hardware", on: false, tone: "#14262d" },
+  { id: "em", n: "Email", i: "Mail", d: "Invoices, invitations, reports", on: true, tone: "#B08D57" },
+  { id: "push", n: "Push notifications", i: "BellRing", d: "ONE Care & ONE Family apps", on: true, tone: "#023C2E" },
+  { id: "sms", n: "SMS", i: "Smartphone", d: "Fallback where required", on: false, tone: "#8a6c3a" },
+  { id: "vid", n: "Video calling", i: "Video", d: "Resident ↔ family calls", on: false, tone: "#046A4E" },
+  { id: "flash", n: "Flash Health", i: "Pill", d: "Pharmacy orders & delivery tracking", on: true, tone: "#B08D57" },
+  { id: "pay", n: "Payment gateway", i: "CreditCard", d: "Online invoice payment", on: false, tone: "#023C2E" },
+  { id: "tv", n: "Smart TV / voice devices", i: "Tv", d: "SAGE Room hardware", on: false, tone: "#090A09" },
 ];
 
 const WORKFLOWS = [
@@ -47,7 +47,7 @@ export default function Integrations() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {WORKFLOWS.map((w) => (
             <button key={w} onClick={() => setWf({ ...wf, [w]: !wf[w] })} className="flex items-center gap-3 rounded-lg bg-cream p-3 text-left">
-              <span className="relative h-6 w-11 shrink-0 rounded-full transition-colors" style={{ background: wf[w] ? "#0e8a9a" : "#cbd6db" }}><span className="absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all" style={{ left: wf[w] ? 22 : 2 }} /></span>
+              <span className="relative h-6 w-11 shrink-0 rounded-full transition-colors" style={{ background: wf[w] ? "#B08D57" : "#D4D2C6" }}><span className="absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all" style={{ left: wf[w] ? 22 : 2 }} /></span>
               <span className="text-sm font-semibold text-forest">{w}</span>
             </button>
           ))}

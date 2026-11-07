@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ReactNode, Suspense, useEffect, useState } from "react";
 import { Bell, LogOut, Menu, ShieldOff, X } from "lucide-react";
-import { Avatar, Icon, Logo } from "@/components/ui";
+import { Avatar, Icon, Logo, V60Logo } from "@/components/ui";
 import { useApp } from "@/lib/store";
 import { DEMO_USERS, ROLE_LABEL } from "@/lib/data";
 import { HOME, MODULES, moduleFor } from "@/lib/nav";
@@ -45,9 +45,9 @@ function Shell({ children }: { children: ReactNode }) {
     <>
       {groups.map((g) => (
         <div key={g} className="mb-5">
-          <div className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">{g}</div>
+          <div className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gold/70">{g}</div>
           {items.filter((m) => m.group === g).map((m) => (
-            <Link key={m.id} href={m.href} className="mb-0.5 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-colors" style={active(m.href) ? { background: "rgba(255,255,255,.14)", color: "#fff" } : { color: "rgba(255,255,255,.7)" }}>
+            <Link key={m.id} href={m.href} className="mb-0.5 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-colors" style={active(m.href) ? { background: "rgba(176,141,87,.18)", color: "#fff", boxShadow: "inset 3px 0 0 #B08D57" } : { color: "rgba(255,255,255,.66)" }}>
               <Icon name={m.icon} size={18} />
               {m.label}
               {m.id === "notifications" && unread > 0 && <span className="ml-auto rounded-full bg-[#e0566f] px-2 py-0.5 text-[10px] font-bold text-white">{unread}</span>}
@@ -60,9 +60,10 @@ function Shell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen md:grid md:grid-cols-[250px_1fr]">
-      <aside className="sticky top-0 hidden h-screen flex-col bg-forest p-4 md:flex">
-        <Link href={HOME[user.role]} className="mb-6 px-2 pt-2"><Logo dark size={36} /></Link>
-        <nav className="flex-1 overflow-y-auto pr-1">{nav}</nav>
+      <aside className="sticky top-0 hidden h-screen flex-col bg-night p-4 md:flex">
+        <Link href={HOME[user.role]} className="mb-6 px-2 pt-2"><Logo dark size={44} /></Link>
+        <nav className="min-h-0 flex-1 overflow-y-auto pr-1 [mask-image:linear-gradient(to_bottom,#000_94%,transparent)]">{nav}</nav>
+        <div className="mb-3 flex justify-center"><V60Logo width={120} /></div>
         <div className="mt-2 flex items-center gap-3 rounded-xl bg-white/10 p-3">
           <Avatar name={user.name} hue={tone} size={38} />
           <div className="min-w-0 flex-1 text-white">
@@ -109,7 +110,7 @@ function Shell({ children }: { children: ReactNode }) {
       {open && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 left-0 flex w-72 flex-col bg-forest p-4">
+          <div className="absolute inset-y-0 left-0 flex w-72 flex-col bg-night p-4">
             <div className="mb-4 flex items-center justify-between px-2 pt-2">
               <Logo dark size={34} />
               <button onClick={() => setOpen(false)} className="text-white"><X size={20} /></button>

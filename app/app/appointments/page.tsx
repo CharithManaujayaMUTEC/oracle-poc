@@ -31,7 +31,7 @@ export default function Appointments() {
               <div className="mb-3 flex items-baseline gap-2"><span className="text-xs font-bold uppercase tracking-wider text-mute">{l.dow}</span><span className="text-xl font-semibold text-forest">{l.date}</span></div>
               <div className="space-y-2">
                 {items.map((a) => (
-                  <div key={a.id} className="rounded-lg border-l-4 bg-cream p-2.5" style={{ borderColor: a.status === "Confirmed" ? "#2f7d5c" : "#0e8a9a" }}>
+                  <div key={a.id} className="rounded-lg border-l-4 bg-cream p-2.5" style={{ borderColor: a.status === "Confirmed" ? "#2f7d5c" : "#B08D57" }}>
                     <div className="text-[11px] font-bold text-mute">{a.time}</div>
                     <div className="text-xs font-semibold text-forest">{a.type}</div>
                     <div className="text-[11px] text-mute">{a.resident.split(" ")[0]}</div>

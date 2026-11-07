@@ -48,9 +48,9 @@ const TONES = {
   green: ["#dcf0e6", "#2f7d5c"],
   amber: ["#fcefce", "#a5741a"],
   red: ["#fbe0e7", "#b02a4a"],
-  blue: ["#dce7fa", "#2f55a4"],
-  teal: ["#e0f0f2", "#176a7c"],
-  gray: ["#e8eff2", "#5d7480"],
+  blue: ["#efe6d2", "#7a5f2e"],
+  teal: ["#E3EFE9", "#046A4E"],
+  gray: ["#ECEAE0", "#66726C"],
 } as const;
 export type Tone = keyof typeof TONES;
 
@@ -103,7 +103,7 @@ export function Donut({ parts, size = 130 }: { parts: { v: number; c: string; l:
   return (
     <div className="flex items-center gap-5">
       <svg width={size} height={size} viewBox="0 0 120 120" className="-rotate-90">
-        <circle cx="60" cy="60" r={r} fill="none" stroke="#e3ecef" strokeWidth="16" />
+        <circle cx="60" cy="60" r={r} fill="none" stroke="#E7E5DA" strokeWidth="16" />
         {parts.map((p, i) => {
           const len = (p.v / total) * c;
           return <circle key={p.l} cx="60" cy="60" r={r} fill="none" stroke={p.c} strokeWidth="16" strokeDasharray={`${len} ${c - len}`} strokeDashoffset={-offs[i]} />;

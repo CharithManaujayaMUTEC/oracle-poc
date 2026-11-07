@@ -28,7 +28,7 @@ export default function Admissions() {
         {list.map((a) => (
           <div key={a.id} className="card p-6">
             <div className="flex flex-wrap items-center gap-4">
-              <Avatar name={a.client} hue="#176a7c" size={48} />
+              <Avatar name={a.client} hue="#046A4E" size={48} />
               <div className="flex-1">
                 <div className="text-lg font-semibold text-forest">{a.client}</div>
                 <div className="text-xs font-semibold text-mute">{a.age} yrs · {a.room} · owner {a.owner} · due {a.due}</div>

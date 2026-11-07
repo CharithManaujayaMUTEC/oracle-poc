@@ -51,12 +51,12 @@ export default function Reports() {
           {rep === "rev" && <><Bars values={rev} labels={MONTHS} height={200} /><div className="mt-6 text-sm font-semibold text-forest">Latest month: LKR {rev[rev.length - 1]}k</div></>}
           {rep === "occ" && (
             <div className="grid gap-6 sm:grid-cols-2">
-              <Donut parts={["occupied", "vacant", "reserved", "maintenance"].map((s, i) => ({ v: rooms.filter((r) => r.status === s).length, c: ["#0e8a9a", "#b9c5cb", "#e0a02b", "#c2395a"][i], l: s }))} />
+              <Donut parts={["occupied", "vacant", "reserved", "maintenance"].map((s, i) => ({ v: rooms.filter((r) => r.status === s).length, c: ["#B08D57", "#BDBBAE", "#e0a02b", "#c2395a"][i], l: s }))} />
               <div className="space-y-2">{rooms.map((r) => <div key={r.id} className="flex justify-between border-b border-line py-1.5 text-sm font-semibold text-forest"><span>{r.name}</span><span className="capitalize text-mute">{r.status}</span></div>)}</div>
             </div>
           )}
           {rep === "out" && <div className="divide-y divide-line">{inv.filter((i) => i.status !== "Paid").map((i) => <div key={i.id} className="flex justify-between py-3 text-sm font-semibold text-forest"><span>{i.id} · {i.resident}</span><span>{fmt(i.total - i.paid)}</span></div>)}</div>}
-          {rep === "inc" && <Donut parts={["Fall", "Medication", "Illness", "Behaviour", "Injury", "Other"].map((t, i) => ({ v: INCIDENTS.filter((x) => x.type === t).length, c: ["#b02a4a", "#e0a02b", "#0e8a9a", "#6b7a99", "#3f9a76", "#9aa7b0"][i], l: t }))} />}
+          {rep === "inc" && <Donut parts={["Fall", "Medication", "Illness", "Behaviour", "Injury", "Other"].map((t, i) => ({ v: INCIDENTS.filter((x) => x.type === t).length, c: ["#b02a4a", "#e0a02b", "#B08D57", "#6b7a99", "#3f9a76", "#A5A396"][i], l: t }))} />}
           {rep === "med" && <div className="space-y-3 text-sm font-semibold text-forest">{[["Missed doses", 1], ["Refused doses", 0], ["Overdue (not recorded)", 3], ["PRN used", 2]].map(([l, v]) => <div key={l as string} className="flex justify-between border-b border-line pb-2"><span>{l}</span><span>{v}</span></div>)}</div>}
           {rep === "add" && <Bars values={[18, 21, 24, 23, 28, 31, 34]} labels={MONTHS} height={200} />}
           <button className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gold" onClick={() => exp("CSV")}><Download size={15} /> Download data</button>

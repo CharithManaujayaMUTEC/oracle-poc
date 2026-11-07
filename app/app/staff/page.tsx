@@ -10,12 +10,12 @@ type Tab = "directory" | "roster" | "training" | "leave";
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const SHIFT: Record<string, { l: string; bg: string; fg: string }> = {
   M: { l: "Morning", bg: "#fcefce", fg: "#a5741a" },
-  E: { l: "Evening", bg: "#dce7fa", fg: "#2f55a4" },
+  E: { l: "Evening", bg: "#efe6d2", fg: "#7a5f2e" },
   N: { l: "Night", bg: "#e4e1f4", fg: "#5a4fa0" },
-  O: { l: "Off", bg: "#f0f4f6", fg: "#8a9aa3" },
+  O: { l: "Off", bg: "#F0EEE6", fg: "#9A9A8C" },
   L: { l: "Leave", bg: "#fbe0e7", fg: "#b02a4a" },
 };
-const DEPT_TONE: Record<string, string> = { Management: "#0b4254", Nursing: "#0e8a9a", Care: "#3f9a76", Wellness: "#6b7a99", Admin: "#b07a2a" };
+const DEPT_TONE: Record<string, string> = { Management: "#023C2E", Nursing: "#B08D57", Care: "#3f9a76", Wellness: "#6b7a99", Admin: "#B08D57" };
 
 const daysLeft = (d: string) => Math.round((new Date(d).getTime() - Date.now()) / 86400000);
 
@@ -114,7 +114,7 @@ export default function Staff() {
         <div className="card divide-y divide-line overflow-hidden">
           {leave.map((l) => (
             <div key={l.id} className="flex flex-wrap items-center gap-4 px-5 py-4">
-              <Avatar name={l.who} hue="#176a7c" size={38} />
+              <Avatar name={l.who} hue="#046A4E" size={38} />
               <div className="flex-1 text-sm font-semibold text-forest">{l.who}<div className="text-xs font-medium text-mute">{l.dates} · {l.type}</div></div>
               <Pill tone={l.status === "Approved" ? "green" : l.status === "Declined" ? "red" : "amber"}>{l.status}</Pill>
               {l.status === "Pending" && (

@@ -47,7 +47,7 @@ export default function Residents() {
                 {r.alerts.length === 0 && <Pill tone="green">No alerts</Pill>}
                 {r.alerts.map((a) => <Pill key={a} tone="red">{a}</Pill>)}
               </div>
-              <div className="relative mt-4 flex gap-1">{[1, 2, 3, 4].map((i) => <span key={i} className="h-1.5 flex-1 rounded-full" style={{ background: i <= r.care ? "var(--gold)" : "#e3ecef" }} />)}</div>
+              <div className="relative mt-4 flex gap-1">{[1, 2, 3, 4].map((i) => <span key={i} className="h-1.5 flex-1 rounded-full" style={{ background: i <= r.care ? "var(--gold)" : "#E7E5DA" }} />)}</div>
             </Link>
           );
         })}

@@ -45,8 +45,8 @@ export default function Finance() {
           <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
             <div className="card p-6"><div className="mb-4 font-semibold text-forest">Revenue trend (LKR thousands)</div><Bars values={rev} labels={MONTHS} height={170} /></div>
             <div className="card space-y-6 p-6">
-              <div><div className="mb-3 text-sm font-semibold text-forest">By facility</div><Donut parts={[{ v: 945, c: "#0b4254", l: "House 1" }, { v: 790, c: "#0e8a9a", l: "House 2" }]} /></div>
-              <div><div className="mb-3 text-sm font-semibold text-forest">By source</div><Donut parts={[{ v: 71, c: "#0b4254", l: "Rooms" }, { v: 18, c: "#0e8a9a", l: "Add-ons" }, { v: 11, c: "#b07a2a", l: "Subscriptions" }]} /></div>
+              <div><div className="mb-3 text-sm font-semibold text-forest">By facility</div><Donut parts={[{ v: 945, c: "#023C2E", l: "House 1" }, { v: 790, c: "#B08D57", l: "House 2" }]} /></div>
+              <div><div className="mb-3 text-sm font-semibold text-forest">By source</div><Donut parts={[{ v: 71, c: "#023C2E", l: "Rooms" }, { v: 18, c: "#B08D57", l: "Add-ons" }, { v: 11, c: "#B08D57", l: "Subscriptions" }]} /></div>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function Finance() {
 
       {tab === "approvals" && (
         <div className="space-y-3">
-          <div className="rounded-lg bg-[#e0f0f2] p-3 text-xs font-semibold text-forest2">Adjustments, refunds and write-offs need authorisation and are recorded in the audit trail.</div>
+          <div className="rounded-lg bg-[#E3EFE9] p-3 text-xs font-semibold text-forest2">Adjustments, refunds and write-offs need authorisation and are recorded in the audit trail.</div>
           {appr.length === 0 && <div className="card p-10 text-center text-sm text-mute">Nothing waiting for approval</div>}
           {appr.map((a) => (
             <div key={a.id} className="card flex flex-wrap items-center gap-4 p-5">

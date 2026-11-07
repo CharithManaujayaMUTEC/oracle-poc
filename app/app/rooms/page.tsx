@@ -6,7 +6,7 @@ import { Modal, PageHead, Pill, Stat } from "@/components/kit";
 import { useApp } from "@/lib/store";
 import { FACILITIES, ROOMS, Room, RoomStatus, fmt } from "@/lib/data";
 
-const ST: Record<RoomStatus, string> = { occupied: "#0e8a9a", vacant: "#9aa7b0", reserved: "#e0a02b", maintenance: "#c2395a" };
+const ST: Record<RoomStatus, string> = { occupied: "#B08D57", vacant: "#A5A396", reserved: "#e0a02b", maintenance: "#c2395a" };
 const STATUSES: RoomStatus[] = ["occupied", "vacant", "reserved", "maintenance"];
 
 export default function Rooms() {
@@ -65,7 +65,7 @@ export default function Rooms() {
         <div className="card p-6">
           <div className="mb-4 font-semibold text-forest">Upcoming admissions</div>
           {[["Kusum Ratnayake", "Ruby", "Mon 9 Nov"], ["Lalith Fernando", "Coral", "Fri 13 Nov"], ["Zeenath Marikar", "Sapphire", "Wed 11 Nov"]].map(([n, r, d]) => (
-            <div key={n} className="flex items-center gap-3 border-t border-line py-3 first:border-0"><Avatar name={n} hue="#176a7c" size={36} /><div className="flex-1 text-sm font-semibold text-forest">{n}<div className="text-xs font-medium text-mute">{r}</div></div><Pill tone="blue">{d}</Pill></div>
+            <div key={n} className="flex items-center gap-3 border-t border-line py-3 first:border-0"><Avatar name={n} hue="#046A4E" size={36} /><div className="flex-1 text-sm font-semibold text-forest">{n}<div className="text-xs font-medium text-mute">{r}</div></div><Pill tone="blue">{d}</Pill></div>
           ))}
         </div>
         <div className="card p-6">

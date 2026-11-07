@@ -56,7 +56,7 @@ export default function Incidents() {
             <div className="flex items-center">
               {INCIDENT_FLOW.map((s, i) => (
                 <div key={s} className="flex flex-1 items-center">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-[11px] font-bold" style={{ background: i <= INCIDENT_FLOW.indexOf(sel.status) ? "var(--forest-2)" : "#e3ecef", color: i <= INCIDENT_FLOW.indexOf(sel.status) ? "#fff" : "var(--mute)" }}>{i + 1}</span>
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-[11px] font-bold" style={{ background: i <= INCIDENT_FLOW.indexOf(sel.status) ? "var(--forest-2)" : "#E7E5DA", color: i <= INCIDENT_FLOW.indexOf(sel.status) ? "#fff" : "var(--mute)" }}>{i + 1}</span>
                   <span className="mx-1.5 hidden text-[11px] font-semibold text-forest sm:inline">{s}</span>
                   {i < 3 && <span className="h-0.5 flex-1 bg-line" />}
                 </div>

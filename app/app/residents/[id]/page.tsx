@@ -103,7 +103,7 @@ export default function Passport({ params }: { params: Promise<{ id: string }> }
                 <div className="flex flex-wrap gap-2">{r.likes.map((l) => <span key={l} className="rounded-md bg-sand px-2.5 py-1 text-xs font-semibold text-forest2">{l}</span>)}</div>
                 <div className="mb-3 mt-6 font-semibold text-forest">Guardian</div>
                 <div className="flex items-center gap-3 rounded-lg bg-sage p-3">
-                  <Avatar name={r.guardian.name} hue="#176a7c" size={40} />
+                  <Avatar name={r.guardian.name} hue="#046A4E" size={40} />
                   <div className="flex-1 text-sm font-semibold text-forest">{r.guardian.name}<div className="text-xs font-medium text-mute">{r.guardian.relation} · {r.guardian.phone}</div></div>
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-forest text-white"><Phone size={15} /></span>
                 </div>

@@ -88,7 +88,7 @@ export default function Care() {
           {(Object.keys(MOODS) as (keyof typeof MOODS)[]).map((m) => {
             const on = (moods[r.id] ?? r.mood) === m;
             return (
-              <button key={m} title={MOODS[m].label} onClick={() => { setMoods({ ...moods, [r.id]: m }); rec(`Recorded mood: ${MOODS[m].label}`); }} className="grid h-11 w-11 place-items-center rounded-lg" style={{ background: on ? MOODS[m].color + "26" : "#eef3f5", outline: on ? `2px solid ${MOODS[m].color}` : "none" }}>
+              <button key={m} title={MOODS[m].label} onClick={() => { setMoods({ ...moods, [r.id]: m }); rec(`Recorded mood: ${MOODS[m].label}`); }} className="grid h-11 w-11 place-items-center rounded-lg" style={{ background: on ? MOODS[m].color + "26" : "#F0EEE6", outline: on ? `2px solid ${MOODS[m].color}` : "none" }}>
                 <Icon name={MOODS[m].icon} size={22} style={{ color: MOODS[m].color }} />
               </button>
             );
@@ -114,7 +114,7 @@ export default function Care() {
             {TASKS.map((t) => {
               const on = done[k(t.id)];
               return (
-                <button key={t.id} onClick={() => { setDone({ ...done, [k(t.id)]: !on }); if (!on) rec(`Recorded: ${t.l}`); }} className="relative flex flex-col items-center gap-2 rounded-xl p-4 active:scale-95" style={{ background: on ? "var(--forest-2)" : "#eef3f5", color: on ? "#fff" : "var(--forest)" }}>
+                <button key={t.id} onClick={() => { setDone({ ...done, [k(t.id)]: !on }); if (!on) rec(`Recorded: ${t.l}`); }} className="relative flex flex-col items-center gap-2 rounded-xl p-4 active:scale-95" style={{ background: on ? "var(--forest-2)" : "#F0EEE6", color: on ? "#fff" : "var(--forest)" }}>
                   <Icon name={t.i} size={28} />
                   <span className="text-[11px] font-semibold">{t.l}</span>
                   {on && <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-white text-forest"><Check size={12} /></span>}
@@ -127,7 +127,7 @@ export default function Care() {
 
       {tab === "meds" && (restricted ? (
         <div className="card p-10 text-center">
-          <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-[#e8eff2] text-mute"><Lock size={24} /></span>
+          <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-[#ECEAE0] text-mute"><Lock size={24} /></span>
           <div className="mt-4 font-semibold text-forest">Medication records are restricted</div>
           <p className="mt-1 text-sm text-mute">Only authorised nursing staff can administer and record medication.</p>
         </div>
@@ -174,7 +174,7 @@ export default function Care() {
             <>
               <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
                 {[["Fall", "ArrowDownToLine"], ["Injury", "Bandage"], ["Illness", "Thermometer"], ["Behaviour", "Brain"], ["Medication", "Pill"], ["Other", "CircleHelp"]].map(([l, ic]) => (
-                  <button key={l} onClick={() => { setSent(true); rec(`Reported incident: ${l}`); toast("Incident reported"); }} className="flex flex-col items-center gap-2 rounded-xl bg-[#eef3f5] p-4 text-forest transition-colors hover:bg-forest hover:text-white">
+                  <button key={l} onClick={() => { setSent(true); rec(`Reported incident: ${l}`); toast("Incident reported"); }} className="flex flex-col items-center gap-2 rounded-xl bg-[#F0EEE6] p-4 text-forest transition-colors hover:bg-forest hover:text-white">
                     <Icon name={ic} size={26} /><span className="text-xs font-semibold">{l}</span>
                   </button>
                 ))}

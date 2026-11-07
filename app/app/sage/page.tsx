@@ -70,7 +70,7 @@ export default function Sage() {
             <div key={i} className={`flex ${m.from === "me" ? "justify-end" : ""}`}>
               <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm font-medium" style={m.from === "me" ? { background: "var(--forest)", color: "#fff", borderBottomRightRadius: 4 } : { background: "var(--sand)", color: "var(--forest)", borderBottomLeftRadius: 4 }}>
                 {m.text}
-                {m.card === "rooms" && <div className="mt-3 flex gap-1">{ROOMS.map((r) => <span key={r.id} title={r.name} className="h-5 flex-1 rounded" style={{ background: r.status === "occupied" ? "#0e8a9a" : r.status === "vacant" ? "#cbd6db" : r.status === "reserved" ? "#e0a02b" : "#c2395a" }} />)}</div>}
+                {m.card === "rooms" && <div className="mt-3 flex gap-1">{ROOMS.map((r) => <span key={r.id} title={r.name} className="h-5 flex-1 rounded" style={{ background: r.status === "occupied" ? "#B08D57" : r.status === "vacant" ? "#D4D2C6" : r.status === "reserved" ? "#e0a02b" : "#c2395a" }} />)}</div>}
               </div>
             </div>
           ))}
@@ -88,7 +88,7 @@ export default function Sage() {
       <div className="space-y-6">
         <div className="card p-5">
           <div className="mb-3 text-xs font-bold uppercase tracking-widest text-mute">What SAGE may do</div>
-          {[[Search, "Retrieve", "Approved information, summaries", "#2f7d5c"], [FilePen, "Prepare", "Quotes, messages, bookings for review", "#0e8a9a"], [ShieldOff, "Never alone", "Clinical orders, medication, pricing, admission", "#b02a4a"]].map(([I, t, d, c]) => {
+          {[[Search, "Retrieve", "Approved information, summaries", "#2f7d5c"], [FilePen, "Prepare", "Quotes, messages, bookings for review", "#B08D57"], [ShieldOff, "Never alone", "Clinical orders, medication, pricing, admission", "#b02a4a"]].map(([I, t, d, c]) => {
             const Ic = I as typeof Search;
             return <div key={t as string} className="flex items-center gap-3 border-t border-line py-3 first:border-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-white" style={{ background: c as string }}><Ic size={16} /></span><div className="text-sm font-semibold text-forest">{t as string}<div className="text-xs font-medium text-mute">{d as string}</div></div></div>;
           })}
