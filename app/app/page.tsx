@@ -94,7 +94,7 @@ export default function Dashboard() {
           <div className="space-y-3">
             {INCIDENTS.filter((i) => i.status !== "Closed").map((i) => (
               <div key={i.id} className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#fbe0e7] text-[#b02a4a]"><Icon name="Siren" size={18} /></span>
+                <span className="grid h-10 w-10 place-items-center rounded-lg tone-red tint"><Icon name="Siren" size={18} /></span>
                 <div className="min-w-0 flex-1 text-sm font-semibold text-forest">{i.type} · {i.resident}<div className="text-xs font-medium text-mute">{i.date}</div></div>
                 <Pill tone={i.severity === "High" ? "red" : "amber"}>{i.severity}</Pill>
               </div>

@@ -32,10 +32,10 @@ function DashMock() {
   return (
     <div className="relative">
       <div className="absolute -inset-8 rounded-full bg-[radial-gradient(closest-side,rgba(4,106,78,.55),transparent)]" />
-      <div className="relative overflow-hidden rounded-xl border border-white/15 bg-white shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]">
+      <div data-theme="light" className="theme-root relative overflow-hidden rounded-xl border border-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]">
         <div className="flex items-center gap-1.5 border-b border-line bg-cream px-4 py-2.5">
           <i className="h-2.5 w-2.5 rounded-full bg-[#e8b4b4]" /><i className="h-2.5 w-2.5 rounded-full bg-[#ecd9a4]" /><i className="h-2.5 w-2.5 rounded-full bg-[#b9dcc3]" />
-          <span className="ml-3 rounded bg-white px-3 py-0.5 text-[10px] font-semibold text-mute">one.village60.lk</span>
+          <span className="ml-3 rounded bg-paper px-3 py-0.5 text-[10px] font-semibold text-mute">one.village60.lk</span>
         </div>
         <div className="grid grid-cols-[56px_1fr]">
           <div className="space-y-3 bg-night p-3">
@@ -66,7 +66,7 @@ function DashMock() {
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2 rounded-lg bg-[#fbe0e7] p-2.5 text-[11px] font-semibold text-[#b02a4a]"><Icon name="Siren" size={14} /> Fall reported · Onyx · acknowledge</div>
+            <div className="flex items-center gap-2 rounded-lg tone-red tint p-2.5 text-[11px] font-semibold"><Icon name="Siren" size={14} /> Fall reported · Onyx · acknowledge</div>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ const APPS = [
 
 function Modules() {
   return (
-    <section id="modules" className="bg-white py-24">
+    <section id="modules" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal className="max-w-xl">
           <div className="text-xs font-bold uppercase tracking-[0.22em] text-gold">Modules</div>
@@ -264,10 +264,9 @@ function Security() {
 
 export default function Home() {
   return (
-    <>
+    <div data-theme="dark" className="theme-root">
       <Nav />
       <Hero />
-      <Brand />
       <Roles />
       <Modules />
       <Journey />
@@ -280,6 +279,7 @@ export default function Home() {
           <Link href="/signup" className="btn border border-white/25 text-white">Create account</Link>
         </div>
       </section>
+      <Brand />
       <footer className="border-t border-white/10 bg-night py-8">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6">
           <Logo dark size={40} />
@@ -287,6 +287,6 @@ export default function Home() {
           <V60Logo width={110} />
         </div>
       </footer>
-    </>
+    </div>
   );
 }

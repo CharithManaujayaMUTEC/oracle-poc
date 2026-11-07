@@ -12,7 +12,7 @@ const SHIFT: Record<string, { l: string; bg: string; fg: string }> = {
   M: { l: "Morning", bg: "#fcefce", fg: "#a5741a" },
   E: { l: "Evening", bg: "#efe6d2", fg: "#7a5f2e" },
   N: { l: "Night", bg: "#e4e1f4", fg: "#5a4fa0" },
-  O: { l: "Off", bg: "#F0EEE6", fg: "#9A9A8C" },
+  O: { l: "Off", bg: "var(--sand)", fg: "#9A9A8C" },
   L: { l: "Leave", bg: "#fbe0e7", fg: "#b02a4a" },
 };
 const DEPT_TONE: Record<string, string> = { Management: "#023C2E", Nursing: "#B08D57", Care: "#3f9a76", Wellness: "#6b7a99", Admin: "#B08D57" };

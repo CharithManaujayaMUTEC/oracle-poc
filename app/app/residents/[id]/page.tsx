@@ -37,7 +37,7 @@ export default function Passport({ params }: { params: Promise<{ id: string }> }
     <div className="space-y-6">
       <Link href="/app/residents" className="inline-flex items-center gap-2 text-sm font-semibold text-mute"><ArrowLeft size={16} /> Residents</Link>
 
-      <div className="card relative overflow-hidden p-6 md:p-8" style={{ background: `linear-gradient(135deg, ${room?.soft ?? "#fff"}, #fff 70%)` }}>
+      <div className="card relative overflow-hidden p-6 md:p-8" style={{ background: `linear-gradient(135deg, ${room?.color ?? "#B08D57"}33, var(--paper) 70%)` }}>
         <div className="absolute -right-6 -top-6 opacity-30">{room && <Gem color={room.color} size={200} />}</div>
         <div className="relative flex flex-wrap items-center gap-6">
           <Avatar name={r.name} hue={r.hue} size={88} />
@@ -91,7 +91,7 @@ export default function Passport({ params }: { params: Promise<{ id: string }> }
                   {r.meds.length === 0 && <div className="text-sm text-mute">None recorded</div>}
                   {r.meds.map((m, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-lg bg-cream p-3">
-                      <span className="grid h-9 w-14 place-items-center rounded-md bg-white text-xs font-bold text-forest">{m.time}</span>
+                      <span className="grid h-9 w-14 place-items-center rounded-md bg-paper text-xs font-bold text-forest">{m.time}</span>
                       <div className="min-w-0 flex-1 text-sm font-semibold text-forest">{m.name}<div className="text-xs font-medium text-mute">{m.dose}</div></div>
                       <Pill tone={{ given: "green", due: "amber", refused: "red", missed: "red" }[m.status] as "green"}>{m.status}</Pill>
                     </div>
@@ -128,7 +128,7 @@ export default function Passport({ params }: { params: Promise<{ id: string }> }
                 ["ShieldAlert", "Risks", r.alerts.join(", ") || "No high risks identified."],
               ].map(([ic, t, d]) => (
                 <div key={t} className="flex items-start gap-3 rounded-lg bg-cream p-3">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white text-forest2"><Icon name={ic} size={17} /></span>
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-paper text-forest2"><Icon name={ic} size={17} /></span>
                   <div><div className="text-xs font-bold uppercase tracking-wider text-mute">{t}</div><div className="text-sm font-semibold text-forest">{d}</div></div>
                 </div>
               ))}
@@ -177,7 +177,7 @@ export default function Passport({ params }: { params: Promise<{ id: string }> }
               {SERVICES.map((s) => {
                 const on = svc.includes(s.id);
                 return (
-                  <button key={s.id} onClick={() => { setSvc(on ? svc.filter((x) => x !== s.id) : [...svc, s.id]); log(on ? "Removed add-on" : "Added add-on (pending guardian agreement)", `${r.name} · ${s.name}`); toast(on ? "Add-on removed" : "Add-on added · agreement pending"); }} className="flex flex-col items-center gap-2 rounded-xl border-2 p-3 text-center" style={{ borderColor: on ? "var(--forest-2)" : "var(--line)", background: on ? "var(--sage)" : "#fff" }}>
+                  <button key={s.id} onClick={() => { setSvc(on ? svc.filter((x) => x !== s.id) : [...svc, s.id]); log(on ? "Removed add-on" : "Added add-on (pending guardian agreement)", `${r.name} · ${s.name}`); toast(on ? "Add-on removed" : "Add-on added · agreement pending"); }} className="flex flex-col items-center gap-2 rounded-xl border-2 p-3 text-center" style={{ borderColor: on ? "var(--forest-2)" : "var(--line)", background: on ? "var(--sage)" : "var(--paper)" }}>
                     <Icon name={s.icon} size={22} className="text-forest" />
                     <span className="text-[11px] font-semibold leading-tight text-forest">{s.name}</span>
                     <span className="text-[10px] font-semibold text-mute">{s.price / 1000}k</span>

@@ -35,7 +35,7 @@ export default function Reports() {
         <div className="space-y-5">
           <div className="card p-2">
             {REPORTS.map((r) => (
-              <button key={r.id} onClick={() => setRep(r.id)} className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold" style={rep === r.id ? { background: "var(--forest)", color: "#fff" } : { color: "var(--forest)" }}><Icon name={r.i} size={17} />{r.t}</button>
+              <button key={r.id} onClick={() => setRep(r.id)} className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold" style={rep === r.id ? { background: "var(--active)", color: "#fff" } : { color: "var(--fg)" }}><Icon name={r.i} size={17} />{r.t}</button>
             ))}
           </div>
           <div className="card space-y-4 p-4">

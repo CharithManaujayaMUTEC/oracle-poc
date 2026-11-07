@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ReactNode, Suspense, useEffect, useState } from "react";
-import { Bell, LogOut, Menu, ShieldOff, X } from "lucide-react";
+import { Bell, LogOut, Menu, Moon, ShieldOff, Sun, X } from "lucide-react";
 import { Avatar, Icon, Logo, V60Logo } from "@/components/ui";
 import { useApp } from "@/lib/store";
 import { DEMO_USERS, ROLE_LABEL } from "@/lib/data";
@@ -21,6 +21,20 @@ function Shell({ children }: { children: ReactNode }) {
   const path = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    try {
+      const t = localStorage.getItem("oracle.theme");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (t === "dark" || t === "light") setTheme(t);
+    } catch {}
+  }, []);
+  const flip = () => {
+    const n = theme === "dark" ? "light" : "dark";
+    setTheme(n);
+    try { localStorage.setItem("oracle.theme", n); } catch {}
+  };
 
   useEffect(() => {
     if (ready && !user) router.replace("/login");
@@ -59,7 +73,7 @@ function Shell({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className="min-h-screen md:grid md:grid-cols-[250px_1fr]">
+    <div data-theme={theme} className="theme-root min-h-screen md:grid md:grid-cols-[250px_1fr]">
       <aside className="sticky top-0 hidden h-screen flex-col bg-night p-4 md:flex">
         <Link href={HOME[user.role]} className="mb-6 px-2 pt-2"><Logo dark size={44} /></Link>
         <nav className="min-h-0 flex-1 overflow-y-auto pr-1 [mask-image:linear-gradient(to_bottom,#000_94%,transparent)]">{nav}</nav>
@@ -75,14 +89,17 @@ function Shell({ children }: { children: ReactNode }) {
       </aside>
 
       <main className="min-w-0">
-        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-white/85 px-5 py-3 backdrop-blur md:px-10">
+        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-paper/85 px-5 py-3 backdrop-blur md:px-10">
           <div className="flex items-center gap-3">
             <button onClick={() => setOpen(true)} className="grid h-10 w-10 place-items-center rounded-lg border border-line md:hidden"><Menu size={20} /></button>
             <div className="text-sm font-semibold text-mute">{current?.label ?? "ONE"}</div>
           </div>
           <div className="flex items-center gap-3">
+            <button onClick={flip} title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} aria-label="Toggle theme" className="grid h-10 w-10 place-items-center rounded-lg border border-line bg-paper text-forest">
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             {user.role !== "guardian" && (
-              <Link href="/app/notifications" className="relative grid h-10 w-10 place-items-center rounded-lg border border-line bg-white text-forest">
+              <Link href="/app/notifications" className="relative grid h-10 w-10 place-items-center rounded-lg border border-line bg-paper text-forest">
                 <Bell size={18} />
                 {unread > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[#c2395a] px-1 text-[10px] font-bold text-white">{unread}</span>}
               </Link>
@@ -98,7 +115,7 @@ function Shell({ children }: { children: ReactNode }) {
         <div className="px-5 py-6 md:px-10">
           {allowed ? children : (
             <div className="card mx-auto mt-16 max-w-md p-10 text-center">
-              <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#fbe0e7] text-[#b02a4a]"><ShieldOff size={30} /></span>
+              <span className="tone-red mx-auto grid h-16 w-16 place-items-center rounded-2xl" style={{ background: "var(--t-bg)", color: "var(--t-fg)" }}><ShieldOff size={30} /></span>
               <div className="mt-5 text-xl font-semibold text-forest">Access restricted</div>
               <p className="mt-2 text-sm text-mute">Your role ({ROLE_LABEL[user.role]}) does not include {current?.label}.</p>
               <Link href={HOME[user.role]} className="btn btn-primary mt-6">Back to my home</Link>

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #f6f5f0;
-  --paper: #ffffff;
-  --sand: #eceae0;
+  --cream: #eeece1;
+  --paper: #f8f6ee;
+  --sand: #e5e2d3;
   --forest: #023c2e;
   --forest-2: #046a4e;
   --sage: #e3efe9;
@@ -11,9 +11,56 @@
   --gold-2: #d9c39a;
   --ink: #0f1512;
   --mute: #66726c;
-  --line: #e1dfd3;
+  --line: #d9d6c6;
   --black: #090a09;
+  --active: #023c2e;
+  --fg: #023c2e;
+  --track: #dcd9ca;
+  --toggle-off: #c9c6b6;
+  --crit-bg: #f6e6e6;
 }
+
+[data-theme="dark"] {
+  --cream: #0b0e0c;
+  --paper: #121715;
+  --sand: #1a211e;
+  --sage: #15261f;
+  --line: #26312b;
+  --ink: #e8e6db;
+  --mute: #8e9a92;
+  --active: #046a4e;
+  --fg: #ecebdf;
+  --track: #26312b;
+  --toggle-off: #3a463f;
+  --crit-bg: #2a1519;
+  color-scheme: dark;
+}
+
+.theme-root {
+  background: var(--cream);
+  color: var(--ink);
+}
+[data-theme="dark"] .text-forest { color: var(--fg); }
+[data-theme="dark"] .text-forest2 { color: #4dbb93; }
+[data-theme="dark"] .text-gold { color: #c9a872; }
+[data-theme="dark"] .btn-ghost { background: transparent; }
+[data-theme="dark"] .card { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 30px -18px rgba(0, 0, 0, 0.8); }
+[data-theme="dark"] input::placeholder, [data-theme="dark"] textarea::placeholder { color: #66726c; }
+
+/* status tones (adapt to light / dark) */
+.tint { background: var(--t-bg); color: var(--t-fg); }
+.tone-green { --t-bg: #d7eadd; --t-fg: #2a6b4d; }
+.tone-amber { --t-bg: #f2e6c6; --t-fg: #8a6418; }
+.tone-red { --t-bg: #f3dcdf; --t-fg: #a3283f; }
+.tone-blue { --t-bg: #ece2cb; --t-fg: #7a5f2e; }
+.tone-teal { --t-bg: #d9e8e0; --t-fg: #046a4e; }
+.tone-gray { --t-bg: #e3e0d2; --t-fg: #5f6a64; }
+[data-theme="dark"] .tone-green { --t-bg: rgba(63, 154, 118, 0.18); --t-fg: #6fd0a6; }
+[data-theme="dark"] .tone-amber { --t-bg: rgba(224, 160, 43, 0.16); --t-fg: #e6bb62; }
+[data-theme="dark"] .tone-red { --t-bg: rgba(224, 86, 111, 0.16); --t-fg: #f08fa1; }
+[data-theme="dark"] .tone-blue { --t-bg: rgba(176, 141, 87, 0.18); --t-fg: #d9c39a; }
+[data-theme="dark"] .tone-teal { --t-bg: rgba(4, 106, 78, 0.28); --t-fg: #5fd0a8; }
+[data-theme="dark"] .tone-gray { --t-bg: rgba(255, 255, 255, 0.07); --t-fg: #a9b3ad; }
 
 @theme inline {
   --color-cream: var(--cream);
@@ -58,7 +105,7 @@ body {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 0.75rem;
-  box-shadow: 0 1px 2px rgba(2, 60, 46, 0.05), 0 8px 24px -16px rgba(2, 60, 46, 0.18);
+  box-shadow: 0 1px 2px rgba(2, 60, 46, 0.05), 0 8px 24px -16px rgba(2, 60, 46, 0.2);
 }
 
 .btn {
@@ -78,9 +125,8 @@ body {
   opacity: 0.92;
 }
 .btn-primary {
-  background: var(--forest);
+  background: var(--active);
   color: #fff;
-  
 }
 .btn-gold {
   background: var(--gold);
@@ -88,14 +134,15 @@ body {
   
 }
 .btn-ghost {
-  background: #fff;
+  background: var(--paper);
   border: 1.5px solid var(--line);
-  color: var(--forest);
+  color: var(--fg);
 }
 
 .input {
   width: 100%;
-  background: #fff;
+  background: var(--paper);
+  color: var(--ink);
   border: 1.5px solid var(--line);
   border-radius: 0.5rem;
   padding: 0.8rem 1rem;
@@ -117,13 +164,14 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   border: 1.5px solid var(--line);
-  background: #fff;
+  background: var(--paper);
+  color: var(--ink);
   cursor: pointer;
   transition: all 0.18s;
 }
 .chip[data-on="true"] {
-  background: var(--forest);
-  border-color: var(--forest);
+  background: var(--active);
+  border-color: var(--active);
   color: #fff;
 }
 

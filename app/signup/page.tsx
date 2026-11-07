@@ -46,10 +46,10 @@ export default function Signup() {
         <input className="input" placeholder="Password" type="password" required minLength={6} value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} />
         <div className="flex gap-1.5">
           {[0, 1, 2, 3].map((i) => (
-            <span key={i} className="h-1.5 flex-1 rounded-full transition-colors" style={{ background: i < strength ? ["#c2395a", "#ee7b61", "#e0a02b", "#3f9a76"][strength - 1] : "#E7E5DA" }} />
+            <span key={i} className="h-1.5 flex-1 rounded-full transition-colors" style={{ background: i < strength ? ["#c2395a", "#ee7b61", "#e0a02b", "#3f9a76"][strength - 1] : "var(--track)" }} />
           ))}
         </div>
-        {err && <div className="rounded-xl bg-[#fbe0e7] px-4 py-2 text-sm font-semibold text-[#c2395a]">{err}</div>}
+        {err && <div className="rounded-xl tone-red tint px-4 py-2 text-sm font-semibold">{err}</div>}
         <button className="btn btn-gold w-full">Create account</button>
       </form>
       <p className="mt-6 text-center text-sm text-mute">

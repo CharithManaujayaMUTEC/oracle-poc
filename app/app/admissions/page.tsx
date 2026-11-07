@@ -44,12 +44,12 @@ export default function Admissions() {
                     <div key={s} className="flex flex-1 flex-col items-center text-center">
                       <div className="flex w-full items-center">
                         <span className="h-0.5 flex-1" style={{ background: i === 0 ? "transparent" : i <= a.step ? "var(--gold)" : "var(--line)" }} />
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={done ? { background: "var(--forest)", color: "#fff" } : cur ? { background: "var(--gold)", color: "#fff", boxShadow: "0 0 0 4px rgba(14,138,154,.2)" } : { background: "#fff", border: "1.5px solid var(--line)", color: "var(--mute)" }}>
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={done ? { background: "var(--active)", color: "#fff" } : cur ? { background: "var(--gold)", color: "#fff", boxShadow: "0 0 0 4px rgba(14,138,154,.2)" } : { background: "var(--paper)", border: "1.5px solid var(--line)", color: "var(--mute)" }}>
                           {done ? <Check size={16} /> : <Icon name={ICONS[i]} size={16} />}
                         </span>
                         <span className="h-0.5 flex-1" style={{ background: i === 11 ? "transparent" : i < a.step ? "var(--gold)" : "var(--line)" }} />
                       </div>
-                      <div className="mt-2 text-[10px] font-bold leading-tight" style={{ color: cur ? "var(--gold)" : done ? "var(--forest)" : "var(--mute)" }}>{s}</div>
+                      <div className="mt-2 text-[10px] font-bold leading-tight" style={{ color: cur ? "var(--gold)" : done ? "var(--fg)" : "var(--mute)" }}>{s}</div>
                     </div>
                   );
                 })}

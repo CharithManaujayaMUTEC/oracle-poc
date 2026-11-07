@@ -82,7 +82,7 @@ export default function Finance() {
 
       {tab === "approvals" && (
         <div className="space-y-3">
-          <div className="rounded-lg bg-[#E3EFE9] p-3 text-xs font-semibold text-forest2">Adjustments, refunds and write-offs need authorisation and are recorded in the audit trail.</div>
+          <div className="rounded-lg bg-sage p-3 text-xs font-semibold text-forest2">Adjustments, refunds and write-offs need authorisation and are recorded in the audit trail.</div>
           {appr.length === 0 && <div className="card p-10 text-center text-sm text-mute">Nothing waiting for approval</div>}
           {appr.map((a) => (
             <div key={a.id} className="card flex flex-wrap items-center gap-4 p-5">

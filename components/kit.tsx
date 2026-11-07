@@ -17,9 +17,9 @@ export function PageHead({ title, sub, actions }: { title: string; sub?: string;
 
 export function Tabs<T extends string>({ tabs, value, onChange }: { tabs: { id: T; label: string; icon?: string; badge?: number }[]; value: T; onChange: (v: T) => void }) {
   return (
-    <div className="mb-6 flex gap-1 overflow-x-auto rounded-xl border border-line bg-white p-1">
+    <div className="mb-6 flex gap-1 overflow-x-auto rounded-xl border border-line bg-paper p-1">
       {tabs.map((t) => (
-        <button key={t.id} onClick={() => onChange(t.id)} className="flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors" style={value === t.id ? { background: "var(--forest)", color: "#fff" } : { color: "var(--mute)" }}>
+        <button key={t.id} onClick={() => onChange(t.id)} className="flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors" style={value === t.id ? { background: "var(--active)", color: "#fff" } : { color: "var(--mute)" }}>
           {t.icon && <Icon name={t.icon} size={16} />}
           {t.label}
           {t.badge ? <span className="rounded-full bg-[#c2395a] px-1.5 text-[10px] font-bold text-white">{t.badge}</span> : null}
@@ -44,26 +44,16 @@ export function Modal({ open, onClose, title, children, wide }: { open: boolean;
   );
 }
 
-const TONES = {
-  green: ["#dcf0e6", "#2f7d5c"],
-  amber: ["#fcefce", "#a5741a"],
-  red: ["#fbe0e7", "#b02a4a"],
-  blue: ["#efe6d2", "#7a5f2e"],
-  teal: ["#E3EFE9", "#046A4E"],
-  gray: ["#ECEAE0", "#66726C"],
-} as const;
-export type Tone = keyof typeof TONES;
+export type Tone = "green" | "amber" | "red" | "blue" | "teal" | "gray";
 
 export function Pill({ tone = "gray", children }: { tone?: Tone; children: ReactNode }) {
-  const [bg, fg] = TONES[tone];
-  return <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1 text-xs font-bold" style={{ background: bg, color: fg }}>{children}</span>;
+  return <span className={`tone-${tone} inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1 text-xs font-bold`} style={{ background: "var(--t-bg)", color: "var(--t-fg)" }}>{children}</span>;
 }
 
 export function Stat({ icon, label, value, sub, tone = "teal" }: { icon: string; label: string; value: ReactNode; sub?: string; tone?: Tone }) {
-  const [bg, fg] = TONES[tone];
   return (
     <div className="card flex items-center gap-4 p-5">
-      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl" style={{ background: bg, color: fg }}><Icon name={icon} size={22} /></span>
+      <span className={`tone-${tone} grid h-12 w-12 shrink-0 place-items-center rounded-xl`} style={{ background: "var(--t-bg)", color: "var(--t-fg)" }}><Icon name={icon} size={22} /></span>
       <div className="min-w-0">
         <div className="truncate text-2xl font-semibold tracking-tight text-forest">{value}</div>
         <div className="truncate text-xs font-semibold text-mute">{label}{sub ? ` · ${sub}` : ""}</div>
@@ -103,7 +93,7 @@ export function Donut({ parts, size = 130 }: { parts: { v: number; c: string; l:
   return (
     <div className="flex items-center gap-5">
       <svg width={size} height={size} viewBox="0 0 120 120" className="-rotate-90">
-        <circle cx="60" cy="60" r={r} fill="none" stroke="#E7E5DA" strokeWidth="16" />
+        <circle cx="60" cy="60" r={r} fill="none" stroke="var(--track)" strokeWidth="16" />
         {parts.map((p, i) => {
           const len = (p.v / total) * c;
           return <circle key={p.l} cx="60" cy="60" r={r} fill="none" stroke={p.c} strokeWidth="16" strokeDasharray={`${len} ${c - len}`} strokeDashoffset={-offs[i]} />;

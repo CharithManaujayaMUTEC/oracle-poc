@@ -41,7 +41,7 @@ function reply(q: string, role: Role, residents: ReturnType<typeof useApp>["resi
 export default function Sage() {
   const { user, residents, toast, log } = useApp();
   const role = user?.role ?? "guardian";
-  const [msgs, setMsgs] = useState<Msg[]>([{ from: "sage", text: `Hello ${user?.name.split(" ")[0]}. How can I help?` }]);
+  const [msgs, setMsgs] = useState<Msg[]>([{ from: "sage", text: `Hello ${user?.name.replace(/^Dr\.\s*/, "").split(" ")[0]}. How can I help?` }]);
   const [typing, setTyping] = useState(false);
   const [v, setV] = useState("");
   const [queue, setQueue] = useState(SAGE_QUEUE);
@@ -68,9 +68,9 @@ export default function Sage() {
         <div className="card mt-4 flex-1 space-y-3 overflow-y-auto p-5">
           {msgs.map((m, i) => (
             <div key={i} className={`flex ${m.from === "me" ? "justify-end" : ""}`}>
-              <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm font-medium" style={m.from === "me" ? { background: "var(--forest)", color: "#fff", borderBottomRightRadius: 4 } : { background: "var(--sand)", color: "var(--forest)", borderBottomLeftRadius: 4 }}>
+              <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm font-medium" style={m.from === "me" ? { background: "var(--active)", color: "#fff", borderBottomRightRadius: 4 } : { background: "var(--sand)", color: "var(--fg)", borderBottomLeftRadius: 4 }}>
                 {m.text}
-                {m.card === "rooms" && <div className="mt-3 flex gap-1">{ROOMS.map((r) => <span key={r.id} title={r.name} className="h-5 flex-1 rounded" style={{ background: r.status === "occupied" ? "#B08D57" : r.status === "vacant" ? "#D4D2C6" : r.status === "reserved" ? "#e0a02b" : "#c2395a" }} />)}</div>}
+                {m.card === "rooms" && <div className="mt-3 flex gap-1">{ROOMS.map((r) => <span key={r.id} title={r.name} className="h-5 flex-1 rounded" style={{ background: r.status === "occupied" ? "#B08D57" : r.status === "vacant" ? "var(--toggle-off)" : r.status === "reserved" ? "#e0a02b" : "#c2395a" }} />)}</div>}
               </div>
             </div>
           ))}
@@ -78,7 +78,7 @@ export default function Sage() {
           <div ref={end} />
         </div>
         <div className="mt-3 flex gap-2 overflow-x-auto">{SUGGEST[role].map((s) => <button key={s} onClick={() => send(s)} className="chip shrink-0" data-on="false">{s}</button>)}</div>
-        <form onSubmit={(e) => { e.preventDefault(); send(v); }} className="mt-3 flex items-center gap-2 rounded-xl border border-line bg-white p-2 pl-4 shadow-sm">
+        <form onSubmit={(e) => { e.preventDefault(); send(v); }} className="mt-3 flex items-center gap-2 rounded-xl border border-line bg-paper p-2 pl-4 shadow-sm">
           <input className="flex-1 bg-transparent text-sm outline-none" placeholder="Ask SAGE" value={v} onChange={(e) => setV(e.target.value)} />
           <button type="button" className="grid h-10 w-10 place-items-center rounded-lg bg-sand text-forest"><Mic size={18} /></button>
           <button className="grid h-10 w-10 place-items-center rounded-lg bg-forest text-white"><Send size={18} /></button>

@@ -29,13 +29,9 @@ export function BrandLogo({ width = 320, className = "" }: { width?: number; cla
   return <Image src="/brand/oracle-logo.png" alt="Oracle by Village 60 Plus — People · Purpose · A Brighter Tomorrow" width={width} height={Math.round(width * 0.968)} className={className} priority />;
 }
 
-/** Village 60 Plus parent-company logo (opaque white artwork, shown on a white tile). */
+/** Village 60 Plus parent-company logo (transparent artwork). */
 export function V60Logo({ width = 140, className = "" }: { width?: number; className?: string }) {
-  return (
-    <span className={`inline-block rounded-lg bg-white p-1.5 ${className}`}>
-      <Image src="/brand/village60-logo.png" alt="Village 60 Plus — Professional Elderly Care Providers" width={width} height={Math.round(width * 0.403)} />
-    </span>
-  );
+  return <Image src="/brand/village60-logo.png" alt="Village 60 Plus — Professional Elderly Care Providers" width={width} height={Math.round(width * 0.352)} className={className} />;
 }
 
 export function Avatar({ name, hue, size = 44 }: { name: string; hue: string; size?: number }) {
@@ -73,7 +69,7 @@ export function Ring({ value, size = 84, stroke = 9, color = "#023C2E", children
   return (
     <div className="relative grid place-items-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} stroke="#E7E5DA" strokeWidth={stroke} fill="none" />
+        <circle cx={size / 2} cy={size / 2} r={r} stroke="var(--track)" strokeWidth={stroke} fill="none" />
         <circle
           cx={size / 2}
           cy={size / 2}

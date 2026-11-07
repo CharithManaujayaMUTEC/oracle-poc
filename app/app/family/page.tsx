@@ -44,7 +44,7 @@ export default function Family() {
 
   return (
     <div className="space-y-6">
-      <div className="card relative overflow-hidden p-6 md:p-8" style={{ background: `linear-gradient(135deg, ${room.soft}, #fff 75%)` }}>
+      <div className="card relative overflow-hidden p-6 md:p-8" style={{ background: `linear-gradient(135deg, ${room.color}33, var(--paper) 75%)` }}>
         <div className="absolute -right-4 -top-4 opacity-30"><Gem color={room.color} size={180} /></div>
         <div className="relative flex flex-wrap items-center gap-5">
           <Avatar name={r.name} hue={r.hue} size={80} />
@@ -103,7 +103,7 @@ export default function Family() {
           <div className="flex-1 space-y-3 overflow-y-auto p-5">
             {msgs.map((m, i) => (
               <div key={i} className={`flex ${m.me ? "justify-end" : ""}`}>
-                <div className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm font-medium" style={m.me ? { background: "var(--forest)", color: "#fff", borderBottomRightRadius: 4 } : { background: "var(--sand)", color: "var(--forest)", borderBottomLeftRadius: 4 }}>{m.t}<div className="mt-1 text-[10px] opacity-60">{m.w}</div></div>
+                <div className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm font-medium" style={m.me ? { background: "var(--active)", color: "#fff", borderBottomRightRadius: 4 } : { background: "var(--sand)", color: "var(--fg)", borderBottomLeftRadius: 4 }}>{m.t}<div className="mt-1 text-[10px] opacity-60">{m.w}</div></div>
               </div>
             ))}
           </div>
@@ -136,7 +136,7 @@ export default function Family() {
             {SERVICES.map((s) => {
               const on = req.includes(s.id);
               return (
-                <button key={s.id} onClick={() => { if (!on) { setReq([...req, s.id]); log("Guardian requested service", s.name); toast("Request sent to management"); } }} className="flex flex-col items-center gap-2 rounded-xl border-2 p-4 text-center" style={{ borderColor: on ? "var(--forest-2)" : "var(--line)", background: on ? "var(--sage)" : "#fff" }}>
+                <button key={s.id} onClick={() => { if (!on) { setReq([...req, s.id]); log("Guardian requested service", s.name); toast("Request sent to management"); } }} className="flex flex-col items-center gap-2 rounded-xl border-2 p-4 text-center" style={{ borderColor: on ? "var(--forest-2)" : "var(--line)", background: on ? "var(--sage)" : "var(--paper)" }}>
                   <Icon name={on ? "Check" : s.icon} size={24} className="text-forest" />
                   <span className="text-[11px] font-semibold leading-tight text-forest">{s.name}</span>
                   <span className="text-[10px] font-semibold text-mute">{on ? "Requested" : `${s.price / 1000}k / mo`}</span>

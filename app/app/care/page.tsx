@@ -62,7 +62,7 @@ export default function Care() {
 
       {conflict && (
         <div className="card flex flex-wrap items-center gap-4 border-[#e0a02b] bg-[#fffaf0] p-4">
-          <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#fcefce] text-[#a5741a]"><Icon name="GitMerge" size={18} /></span>
+          <span className="grid h-10 w-10 place-items-center rounded-lg tone-amber tint"><Icon name="GitMerge" size={18} /></span>
           <div className="min-w-0 flex-1 text-sm font-semibold text-forest">Sync conflict: hydration for {r.preferred} was recorded on two devices<div className="text-xs font-medium text-mute">Nothing is overwritten silently. Choose what to keep.</div></div>
           <button className="btn btn-primary !px-4 !py-1.5 text-xs" onClick={() => { setConflict(false); setQueued(0); toast("Both records kept"); log("Resolved sync conflict (kept both)", r.name); }}>Keep both</button>
           <button className="btn btn-ghost !px-4 !py-1.5 text-xs" onClick={() => { setConflict(false); setQueued(0); toast("Kept the server version"); }}>Keep server</button>
@@ -71,7 +71,7 @@ export default function Care() {
 
       <div className="-mx-5 flex gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:px-0">
         {residents.map((x) => (
-          <button key={x.id} onClick={() => { setId(x.id); setSent(false); }} className="flex shrink-0 flex-col items-center gap-1.5 rounded-xl p-3" style={x.id === id ? { background: "var(--forest)", color: "#fff" } : { background: "#fff", border: "1px solid var(--line)" }}>
+          <button key={x.id} onClick={() => { setId(x.id); setSent(false); }} className="flex shrink-0 flex-col items-center gap-1.5 rounded-xl p-3" style={x.id === id ? { background: "var(--active)", color: "#fff" } : { background: "var(--paper)", border: "1px solid var(--line)" }}>
             <Avatar name={x.name} hue={x.hue} size={46} />
             <span className="text-[11px] font-semibold">{x.preferred.split(" ")[0]}</span>
           </button>
@@ -88,7 +88,7 @@ export default function Care() {
           {(Object.keys(MOODS) as (keyof typeof MOODS)[]).map((m) => {
             const on = (moods[r.id] ?? r.mood) === m;
             return (
-              <button key={m} title={MOODS[m].label} onClick={() => { setMoods({ ...moods, [r.id]: m }); rec(`Recorded mood: ${MOODS[m].label}`); }} className="grid h-11 w-11 place-items-center rounded-lg" style={{ background: on ? MOODS[m].color + "26" : "#F0EEE6", outline: on ? `2px solid ${MOODS[m].color}` : "none" }}>
+              <button key={m} title={MOODS[m].label} onClick={() => { setMoods({ ...moods, [r.id]: m }); rec(`Recorded mood: ${MOODS[m].label}`); }} className="grid h-11 w-11 place-items-center rounded-lg" style={{ background: on ? MOODS[m].color + "26" : "var(--sand)", outline: on ? `2px solid ${MOODS[m].color}` : "none" }}>
                 <Icon name={MOODS[m].icon} size={22} style={{ color: MOODS[m].color }} />
               </button>
             );
@@ -114,10 +114,10 @@ export default function Care() {
             {TASKS.map((t) => {
               const on = done[k(t.id)];
               return (
-                <button key={t.id} onClick={() => { setDone({ ...done, [k(t.id)]: !on }); if (!on) rec(`Recorded: ${t.l}`); }} className="relative flex flex-col items-center gap-2 rounded-xl p-4 active:scale-95" style={{ background: on ? "var(--forest-2)" : "#F0EEE6", color: on ? "#fff" : "var(--forest)" }}>
+                <button key={t.id} onClick={() => { setDone({ ...done, [k(t.id)]: !on }); if (!on) rec(`Recorded: ${t.l}`); }} className="relative flex flex-col items-center gap-2 rounded-xl p-4 active:scale-95" style={{ background: on ? "var(--forest-2)" : "var(--sand)", color: on ? "#fff" : "var(--fg)" }}>
                   <Icon name={t.i} size={28} />
                   <span className="text-[11px] font-semibold">{t.l}</span>
-                  {on && <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-white text-forest"><Check size={12} /></span>}
+                  {on && <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-paper text-forest"><Check size={12} /></span>}
                 </button>
               );
             })}
@@ -127,7 +127,7 @@ export default function Care() {
 
       {tab === "meds" && (restricted ? (
         <div className="card p-10 text-center">
-          <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-[#ECEAE0] text-mute"><Lock size={24} /></span>
+          <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-sand text-mute"><Lock size={24} /></span>
           <div className="mt-4 font-semibold text-forest">Medication records are restricted</div>
           <p className="mt-1 text-sm text-mute">Only authorised nursing staff can administer and record medication.</p>
         </div>
@@ -138,7 +138,7 @@ export default function Care() {
             const st = meds[k("m", i)] ?? m.status;
             return (
               <div key={i} className="flex flex-wrap items-center gap-3 rounded-lg bg-cream p-3">
-                <span className="flex items-center gap-1 rounded-md bg-white px-3 py-2 text-xs font-bold text-forest"><Clock size={13} />{m.time}</span>
+                <span className="flex items-center gap-1 rounded-md bg-paper px-3 py-2 text-xs font-bold text-forest"><Clock size={13} />{m.time}</span>
                 <div className="min-w-[120px] flex-1 text-sm font-semibold text-forest">{m.name}<div className="text-xs font-medium text-mute">{m.dose}</div></div>
                 {st === "due" || st === "missed" ? (
                   <div className="flex gap-2">
@@ -174,7 +174,7 @@ export default function Care() {
             <>
               <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
                 {[["Fall", "ArrowDownToLine"], ["Injury", "Bandage"], ["Illness", "Thermometer"], ["Behaviour", "Brain"], ["Medication", "Pill"], ["Other", "CircleHelp"]].map(([l, ic]) => (
-                  <button key={l} onClick={() => { setSent(true); rec(`Reported incident: ${l}`); toast("Incident reported"); }} className="flex flex-col items-center gap-2 rounded-xl bg-[#F0EEE6] p-4 text-forest transition-colors hover:bg-forest hover:text-white">
+                  <button key={l} onClick={() => { setSent(true); rec(`Reported incident: ${l}`); toast("Incident reported"); }} className="flex flex-col items-center gap-2 rounded-xl bg-sand p-4 text-forest transition-colors hover:bg-forest hover:text-white">
                     <Icon name={ic} size={26} /><span className="text-xs font-semibold">{l}</span>
                   </button>
                 ))}

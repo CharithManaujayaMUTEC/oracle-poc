@@ -35,7 +35,7 @@ export default function HomeCare() {
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {[[KeyRound, "Access", c.access], [Cat, "Pets", c.pets], [Wrench, "Equipment", c.equip], [null, "Scheduled", `${c.days} · ${c.carer}`]].map(([I, l, v], i) => (
                 <div key={i} className="flex items-start gap-3 rounded-lg bg-cream p-3">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white text-forest2">{I ? (() => { const Ic = I as typeof KeyRound; return <Ic size={16} />; })() : <Icon name="CalendarDays" size={16} />}</span>
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-paper text-forest2">{I ? (() => { const Ic = I as typeof KeyRound; return <Ic size={16} />; })() : <Icon name="CalendarDays" size={16} />}</span>
                   <div><div className="text-[11px] font-bold uppercase tracking-wider text-mute">{l as string}</div><div className="text-sm font-semibold text-forest">{v as string}</div></div>
                 </div>
               ))}

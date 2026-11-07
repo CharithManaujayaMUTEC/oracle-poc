@@ -63,7 +63,7 @@ export default function Login() {
           <input className="input !pl-11 !pr-11" placeholder="Password" type={show ? "text" : "password"} required value={pw} onChange={(e) => setPw(e.target.value)} />
           <button type="button" onClick={() => setShow(!show)} className="absolute right-4 top-1/2 -translate-y-1/2 text-mute">{show ? <EyeOff size={18} /> : <Eye size={18} />}</button>
         </div>
-        {err && <div className="rounded-lg bg-[#fbe0e7] px-4 py-2 text-sm font-semibold text-[#b02a4a]">{err}</div>}
+        {err && <div className="rounded-lg tone-red tint px-4 py-2 text-sm font-semibold">{err}</div>}
         <button className="btn btn-primary w-full">Sign in</button>
       </form>
       <p className="mt-6 text-center text-sm text-mute">

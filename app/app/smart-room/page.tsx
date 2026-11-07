@@ -82,7 +82,7 @@ export default function SmartRoom() {
           {reqs.length === 0 && <div className="rounded-xl border border-dashed border-line p-8 text-center text-sm text-mute">Press “Call for assistance” on the room screen</div>}
           <div className="space-y-3">
             {reqs.map((q) => (
-              <div key={q.id} className="rounded-xl border p-4" style={{ borderColor: q.state === "Escalated" ? "#c2395a" : "var(--line)", background: q.state === "Escalated" ? "#fff6f8" : "#fff" }}>
+              <div key={q.id} className="rounded-xl border p-4" style={{ borderColor: q.state === "Escalated" ? "#c2395a" : "var(--line)", background: q.state === "Escalated" ? "var(--crit-bg)" : "var(--paper)" }}>
                 <div className="flex items-center gap-3">
                   <Avatar name={q.resident} hue="#3f9a76" size={36} />
                   <div className="flex-1 text-sm font-semibold text-forest">{q.room} · {q.resident}<div className="text-xs font-medium text-mute">{q.at}{q.state === "New" ? ` · escalates in ${20 - q.secs}s` : ""}</div></div>

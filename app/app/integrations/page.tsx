@@ -47,7 +47,7 @@ export default function Integrations() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {WORKFLOWS.map((w) => (
             <button key={w} onClick={() => setWf({ ...wf, [w]: !wf[w] })} className="flex items-center gap-3 rounded-lg bg-cream p-3 text-left">
-              <span className="relative h-6 w-11 shrink-0 rounded-full transition-colors" style={{ background: wf[w] ? "#B08D57" : "#D4D2C6" }}><span className="absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all" style={{ left: wf[w] ? 22 : 2 }} /></span>
+              <span className="relative h-6 w-11 shrink-0 rounded-full transition-colors" style={{ background: wf[w] ? "#B08D57" : "var(--toggle-off)" }}><span className="absolute top-0.5 h-5 w-5 rounded-full bg-paper shadow transition-all" style={{ left: wf[w] ? 22 : 2 }} /></span>
               <span className="text-sm font-semibold text-forest">{w}</span>
             </button>
           ))}

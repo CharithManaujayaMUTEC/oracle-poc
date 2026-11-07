@@ -103,7 +103,7 @@ export default function Register() {
       <div className="mx-auto max-w-lg py-10 text-center">
         <div className="pop mx-auto grid h-24 w-24 place-items-center rounded-full bg-[#3f9a76] text-white shadow-xl"><Check size={48} strokeWidth={3} /></div>
         <h1 className="mt-6 text-4xl font-semibold text-forest">Welcome, {done.preferred}</h1>
-        <div className="card relative mt-8 overflow-hidden p-6 text-left" style={{ background: `linear-gradient(135deg, ${rm?.soft}, #fff 70%)` }}>
+        <div className="card relative mt-8 overflow-hidden p-6 text-left" style={{ background: `linear-gradient(135deg, ${rm?.color ?? "#B08D57"}33, var(--paper) 70%)` }}>
           <div className="absolute -right-4 -top-4 opacity-30">{rm && <Gem color={rm.color} size={130} />}</div>
           <div className="relative flex items-center gap-4">
             <Avatar name={done.name} hue={done.hue} size={64} />
@@ -134,7 +134,7 @@ export default function Register() {
         {STEPS.map((s, i) => (
           <div key={s.t} className="flex flex-1 items-center last:flex-none">
             <button onClick={() => i < step && setStep(i)} className="flex flex-col items-center gap-1">
-              <span className="grid h-11 w-11 place-items-center rounded-full transition-all" style={i <= step ? { background: "var(--forest)", color: "#fff", transform: i === step ? "scale(1.15)" : "none", boxShadow: i === step ? "0 0 0 5px rgba(176,141,74,.25)" : "none" } : { background: "#fff", border: "1.5px solid var(--line)", color: "var(--mute)" }}>
+              <span className="grid h-11 w-11 place-items-center rounded-full transition-all" style={i <= step ? { background: "var(--active)", color: "#fff", transform: i === step ? "scale(1.15)" : "none", boxShadow: i === step ? "0 0 0 5px rgba(176,141,74,.25)" : "none" } : { background: "var(--paper)", border: "1.5px solid var(--line)", color: "var(--mute)" }}>
                 {i < step ? <Check size={18} /> : <Icon name={s.i} size={18} />}
               </span>
               <span className="hidden text-[10px] font-bold text-mute sm:block">{s.t}</span>
@@ -173,11 +173,11 @@ export default function Register() {
               <Chips options={AUTH} value={f.gAuth} onChange={(v) => set("gAuth", v)} />
               {f.gAuth !== "None" && (
                 <button type="button" onClick={() => set("gVerified", !f.gVerified)} className="mt-4 flex items-center gap-3 rounded-2xl bg-cream p-3 text-sm font-bold text-forest">
-                  <span className="grid h-6 w-6 place-items-center rounded-md border-2" style={{ background: f.gVerified ? "#3f9a76" : "#fff", borderColor: f.gVerified ? "#3f9a76" : "var(--line)", color: "#fff" }}>{f.gVerified && <Check size={14} />}</span>
+                  <span className="grid h-6 w-6 place-items-center rounded-md border-2" style={{ background: f.gVerified ? "#3f9a76" : "var(--paper)", borderColor: f.gVerified ? "#3f9a76" : "var(--line)", color: "#fff" }}>{f.gVerified && <Check size={14} />}</span>
                   Documents verified
                 </button>
               )}
-              <div className="mt-5 flex items-start gap-3 rounded-2xl bg-[#fcefce] p-3 text-xs font-semibold text-[#8a6a1f]">
+              <div className="mt-5 flex items-start gap-3 rounded-2xl tone-amber tint p-3 text-xs font-semibold">
                 <Icon name="Info" size={16} className="mt-0.5 shrink-0" /> Family ≠ legal authority
               </div>
             </>
@@ -216,7 +216,7 @@ export default function Register() {
               {SERVICES.map((s) => {
                 const on = f.services.includes(s.id);
                 return (
-                  <button key={s.id} onClick={() => toggle("services", s.id)} className="relative flex flex-col items-center gap-2 rounded-3xl border-2 p-4 text-center transition-all" style={{ borderColor: on ? s.tone : "var(--line)", background: on ? s.tone + "14" : "#fff" }}>
+                  <button key={s.id} onClick={() => toggle("services", s.id)} className="relative flex flex-col items-center gap-2 rounded-3xl border-2 p-4 text-center transition-all" style={{ borderColor: on ? s.tone : "var(--line)", background: on ? s.tone + "14" : "var(--paper)" }}>
                     <span className="grid h-12 w-12 place-items-center rounded-2xl text-white" style={{ background: s.tone }}><Icon name={s.icon} size={22} /></span>
                     <span className="text-[11px] font-bold leading-tight text-forest">{s.name}</span>
                     <span className="text-[10px] font-semibold text-mute">{(s.price / 1000).toFixed(0)}k</span>
@@ -234,7 +234,7 @@ export default function Register() {
               <Label>Mobility</Label>
               <div className="grid grid-cols-4 gap-3">
                 {MOB.map((m) => (
-                  <button key={m.v} onClick={() => set("mobility", m.v)} className="flex flex-col items-center gap-2 rounded-3xl border-2 p-4 text-[11px] font-bold transition-all" style={{ borderColor: f.mobility === m.v ? "var(--forest)" : "var(--line)", background: f.mobility === m.v ? "var(--sage)" : "#fff" }}>
+                  <button key={m.v} onClick={() => set("mobility", m.v)} className="flex flex-col items-center gap-2 rounded-3xl border-2 p-4 text-[11px] font-bold transition-all" style={{ borderColor: f.mobility === m.v ? "var(--active)" : "var(--line)", background: f.mobility === m.v ? "var(--sage)" : "var(--paper)" }}>
                     <Icon name={m.i} size={26} className="text-forest" />{m.v}
                   </button>
                 ))}
@@ -270,10 +270,10 @@ export default function Register() {
                   ["c4", "Transport coordination", "Car"],
                 ] as const).map(([k, l, ic]) => (
                   <button key={k} onClick={() => set(k, !f[k])} className="flex w-full items-center gap-4 rounded-2xl bg-cream p-4 text-left">
-                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white text-forest"><Icon name={ic} size={20} /></span>
+                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-paper text-forest"><Icon name={ic} size={20} /></span>
                     <span className="flex-1 text-sm font-bold text-forest">{l}</span>
                     <span className="relative h-7 w-12 rounded-full transition-colors" style={{ background: f[k] ? "#3f9a76" : "#d9d2c0" }}>
-                      <span className="absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all" style={{ left: f[k] ? 24 : 4 }} />
+                      <span className="absolute top-1 h-5 w-5 rounded-full bg-paper shadow transition-all" style={{ left: f[k] ? 24 : 4 }} />
                     </span>
                   </button>
                 ))}

@@ -70,7 +70,7 @@ export default function Pricing() {
             <Field label="Accommodation package">
               <div className="grid gap-2 sm:grid-cols-2">
                 {items.filter((i) => i.category === "Accommodation" && i.billing === "Monthly").map((i) => (
-                  <button key={i.id} onClick={() => setBase(i.id)} className="rounded-lg border-2 p-3 text-left text-sm font-semibold text-forest" style={{ borderColor: base === i.id ? "var(--forest-2)" : "var(--line)", background: base === i.id ? "var(--sage)" : "#fff" }}>{i.name}<div className="text-xs font-medium text-mute">{fmt(i.price)}</div></button>
+                  <button key={i.id} onClick={() => setBase(i.id)} className="rounded-lg border-2 p-3 text-left text-sm font-semibold text-forest" style={{ borderColor: base === i.id ? "var(--forest-2)" : "var(--line)", background: base === i.id ? "var(--sage)" : "var(--paper)" }}>{i.name}<div className="text-xs font-medium text-mute">{fmt(i.price)}</div></button>
                 ))}
               </div>
             </Field>
@@ -102,7 +102,7 @@ export default function Pricing() {
         {edit && (
           <div className="space-y-4">
             <Field label="New price (LKR)"><input type="number" className="input" value={price} onChange={(e) => setPrice(+e.target.value)} /></Field>
-            <div className="flex items-start gap-2 rounded-lg bg-[#fcefce] p-3 text-xs font-semibold text-[#8a6a1f]"><History size={15} className="mt-0.5 shrink-0" />The old price is kept in history. Existing resident agreements keep their agreed price.</div>
+            <div className="flex items-start gap-2 rounded-lg tone-amber tint p-3 text-xs font-semibold"><History size={15} className="mt-0.5 shrink-0" />The old price is kept in history. Existing resident agreements keep their agreed price.</div>
             {edit.history.length > 0 && <div className="text-xs text-mute">History: {edit.history.map((h) => `${h.date} ${fmt(h.price)}`).join(" · ")}</div>}
             <button className="btn btn-primary w-full" onClick={() => {
               setItems((p) => p.map((x) => (x.id === edit.id ? { ...x, price, history: [{ date: "Nov 2026", price: x.price }, ...x.history] } : x)));
